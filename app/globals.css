@@ -2,12 +2,28 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1f2937;
-  --accent: #3f36d1;
-  --accent-hover: #352bb8;
-  --muted: #4b5563;
+  --foreground: #0f172a;
+  --foreground-muted: #475569;
+  --accent: #1e40af;
+  --accent-hover: #1d4ed8;
+  --accent-orange: #ea580c;
+  --accent-orange-hover: #c2410c;
+  --accent-orange-light: #fff7ed;
+  --muted: #64748b;
   --card-bg: #ffffff;
   --border: #e2e8f0;
+  --section-bg-subtle: #f1f5f9;
+  --hero-bg: #eef2ff;
+  --hero-section-blue: #1e40af;
+  --hero-bright-blue: #dbeafe;
+  --section-padding: clamp(2rem, 4vw, 3.5rem);
+  --content-max: min(1440px, 96vw);
+  --radius: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.07), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+  --transition: 0.2s ease;
 }
 
 @theme inline {
@@ -15,21 +31,127 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-hover: var(--accent-hover);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-orange-hover: var(--accent-orange-hover);
+  --color-accent-orange-light: var(--accent-orange-light);
   --color-muted: var(--muted);
   --color-card-bg: var(--card-bg);
   --color-border: var(--border);
   --font-sans: var(--font-inter);
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), system-ui, sans-serif;
+/* Palette utility classes – use across whole page */
+.bg-palette-page { background-color: var(--background); }
+.bg-palette-section { background-color: var(--accent-orange-light); }
+.bg-palette-section-subtle { background-color: var(--section-bg-subtle); }
+.bg-hero { background-color: var(--hero-bg); }
+.bg-hero-section-blue { background-color: var(--hero-section-blue); }
+.bg-hero-bright-blue { background-color: var(--hero-bright-blue); }
+.bg-palette-card { background-color: var(--card-bg); }
+.text-palette-fg { color: var(--foreground); }
+.text-palette-muted { color: var(--foreground-muted); }
+.text-palette-accent { color: var(--accent); }
+.text-palette-orange { color: var(--accent-orange); }
+.border-palette { border-color: var(--border); }
+.bg-palette-accent { background-color: var(--accent); }
+.bg-palette-orange { background-color: var(--accent-orange); }
+
+/* Separator band backgrounds – for clear section color changes */
+.separator-bg-white { background-color: var(--card-bg); }
+.separator-bg-warm { background-color: var(--section-bg-subtle); }
+.separator-bg-orange { background-color: var(--accent-orange-light); }
+.separator-bg-accent { background-color: var(--accent); }
+.separator-line-accent { border-color: var(--accent); }
+.separator-line-orange { border-color: var(--accent-orange); }
+
+/* Box frames – orange or blue; small 3D lift (visible but subtle) */
+.box-frame,
+.box-frame-blue,
+.box-frame-subtle {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+.box-frame {
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--accent-orange);
+  background-color: var(--card-bg);
+}
+.box-frame-blue {
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--accent);
+  background-color: var(--card-bg);
+}
+.box-frame-subtle {
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border);
+  background-color: var(--card-bg);
+}
+.box-frame-pill {
+  border-radius: 9999px;
+  border: 2px solid var(--accent-orange);
+  background-color: var(--card-bg);
+}
+.box-frame-pill-blue {
+  border-radius: 9999px;
+  border: 2px solid var(--accent);
+  background-color: var(--card-bg);
+}
+.card-3d {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), 0 6px 20px rgba(0, 0, 0, 0.06);
 }
 
-/* Smooth scroll when reduced motion is not preferred */
-@media (prefers-reduced-motion: no-preference) {
-  html {
-    scroll-behavior: smooth;
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  min-height: 100vh;
+  color: var(--foreground);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Blinking box: stronger border/glow pulse for hero chips */
+@keyframes box-blink {
+  0%, 100% {
+    box-shadow: 0 1px 3px rgba(42, 103, 196, 0.1);
+    border-color: rgba(42, 103, 196, 0.2);
+    opacity: 1;
   }
+  50% {
+    box-shadow: 0 0 0 3px rgba(42, 103, 196, 0.35), 0 0 20px rgba(42, 103, 196, 0.2);
+    border-color: rgba(42, 103, 196, 0.6);
+    opacity: 0.92;
+  }
+}
+
+.animate-box-blink {
+  animation: box-blink 1.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-box-blink {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* Section consistency */
+.section-pad {
+  padding-top: var(--section-padding);
+  padding-bottom: var(--section-padding);
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+}
+
+.content-width {
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
 }

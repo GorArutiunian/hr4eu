@@ -135,6 +135,35 @@ export const services: ServiceItem[] = [
     ],
   },
   {
+    slug: "administrative",
+    title: "Administrative & Logistics",
+    shortDescription:
+      "Administrative support, logistics coordination, and back-office operations for your EU business.",
+    description:
+      "We provide administrative and logistics teams—order management, supply chain coordination, documentation, and administrative support—with one EU-facing lead and 3–5 Armenia-based specialists who integrate with your processes.",
+    icon: "clipboard",
+    roles: [
+      "Logistics coordinators",
+      "Supply chain specialists",
+      "Order management",
+      "Administrative assistants",
+      "Documentation and filing",
+      "Inventory and warehouse support",
+      "Procurement support",
+      "Vendor coordination",
+    ],
+    engagementModel: {
+      euLead: "1 EU-facing admin or logistics lead",
+      specialists: "3–5 Armenia-based administrative and logistics specialists",
+    },
+    whyHr4eu: [
+      "One EU point of contact for coordination and reporting.",
+      "Cost-effective scaling of administrative and logistics capacity.",
+      "Support for EU workflows and documentation standards.",
+      "Flexible team size for seasonal or project-based needs.",
+    ],
+  },
+  {
     slug: "operations",
     title: "Operations & Support",
     shortDescription:

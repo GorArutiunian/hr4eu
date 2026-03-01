@@ -12,7 +12,7 @@ export default function NotFound() {
       <p className="mt-2 text-[#4B5563]">{t.notFound.text}</p>
       <Link
         href="/"
-        className="mt-6 rounded-full bg-[#3F36D1] px-6 py-3 text-white font-medium hover:bg-[#352bb8] focus:outline-none focus:ring-2 focus:ring-[#3F36D1] focus:ring-offset-2"
+        className="mt-6 rounded-full bg-[#2A67C4] px-6 py-3 text-white font-medium hover:bg-[#0B429A] focus:outline-none focus:ring-2 focus:ring-[#2A67C4] focus:ring-offset-2"
       >
         {t.notFound.back}
       </Link>

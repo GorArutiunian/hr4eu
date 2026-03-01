@@ -31,38 +31,51 @@ export default function BenefitsSection() {
 
   return (
     <section
-      className="bg-white px-4 py-16 sm:px-6 lg:px-8"
+      className="bg-palette-card section-pad"
       aria-labelledby="benefits-heading"
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="content-width">
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 id="benefits-heading" className="text-3xl font-bold text-gray-900 sm:text-4xl">
+          <h2 id="benefits-heading" className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
             {t.benefits.title}
           </h2>
-          <p className="mt-3 text-lg text-[#4B5563]">
+          <p className="mt-4 text-lg text-slate-600">
             {t.benefits.subtitle}
           </p>
         </motion.div>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <motion.div
+          className="mt-10 overflow-hidden rounded-2xl border-2 border-[var(--accent-orange)]/30 bg-white"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4 }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=1200&q=85"
+            alt=""
+            className="h-56 w-full object-cover object-center sm:h-64"
+          />
+        </motion.div>
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {benefitKeys.map((b, i) => (
             <motion.div
               key={b.title}
-              className="rounded-2xl border border-gray-200 bg-white p-6"
-              initial={{ opacity: 0, y: 16 }}
+              className="box-frame-blue p-6 transition-all duration-200 hover:shadow-md"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.35, delay: i * 0.05 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.4, delay: i * 0.06 }}
             >
-              <span className="text-[#3F36D1]" aria-hidden="true">
+              <span className="text-palette-accent" aria-hidden="true">
                 {icons[i]}
               </span>
-              <h3 className="mt-4 font-semibold text-gray-900">{t.benefits[b.title]}</h3>
-              <p className="mt-2 text-sm text-[#4B5563]">{t.benefits[b.desc]}</p>
+              <h3 className="mt-4 font-semibold text-slate-900">{t.benefits[b.title]}</h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">{t.benefits[b.desc]}</p>
             </motion.div>
           ))}
         </div>
@@ -73,14 +86,14 @@ export default function BenefitsSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
         >
-          <h3 className="text-lg font-semibold text-gray-900">
+          <h3 className="text-lg font-semibold text-slate-900">
             {t.benefits.industries}
           </h3>
-          <div className="mt-4 flex gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent">
+          <div className="mt-4 flex gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent">
             {industryList.map((industry) => (
               <span
                 key={industry}
-                className="shrink-0 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-[#4B5563]"
+                className="shrink-0 box-frame-pill-blue px-4 py-2 text-sm font-medium text-palette-muted"
               >
                 {industry}
               </span>

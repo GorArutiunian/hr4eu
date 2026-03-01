@@ -1,12 +1,13 @@
 "use client";
 
+import { HR4EUInline } from "@/components/HR4EUBrand";
 import { motion, useReducedMotion } from "framer-motion";
 import { useLocale } from "@/context/LocaleContext";
 
 const stepKeys = [
-  { title: "step1Title" as const, desc: "step1Desc" as const },
-  { title: "step2Title" as const, desc: "step2Desc" as const },
-  { title: "step3Title" as const, desc: "step3Desc" as const },
+  { title: "step1Title" as const, desc: "step1Desc" as const, img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&q=85" },
+  { title: "step2Title" as const, desc: "step2Desc" as const, img: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&q=85" },
+  { title: "step3Title" as const, desc: "step3Desc" as const, img: "https://images.unsplash.com/photo-1573164713988-8665fc963095?w=500&q=85" },
 ];
 
 export default function HowItWorks() {
@@ -15,48 +16,52 @@ export default function HowItWorks() {
 
   return (
     <section
-      className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 lg:px-8"
+      className="relative overflow-hidden bg-palette-section section-pad"
       aria-labelledby="how-hr4eu-works-heading"
     >
-      <div className="pointer-events-none absolute bottom-0 left-0 h-64 w-64 rounded-full bg-[#3F36D1]/[0.05]" style={{ filter: "blur(60px)" }} aria-hidden />
-      <div className="relative mx-auto max-w-6xl">
+      <div className="content-width relative">
         <motion.div
           className="text-center"
-          initial={reducedMotion ? false : { opacity: 0, y: 12 }}
+          initial={reducedMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
         >
+          <div className="flex justify-center mb-4">
+            <img src="/logo.png" alt="" className="h-12 w-auto" />
+          </div>
           <h2
             id="how-hr4eu-works-heading"
-            className="text-3xl font-bold text-gray-900 sm:text-4xl"
+            className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl"
           >
-            {t.howItWorks.title}
+            <HR4EUInline>{t.howItWorks.title}</HR4EUInline>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-[#4B5563]">
+          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
             {t.howItWorks.subtitle}
           </p>
         </motion.div>
-        <div className="mt-14 grid gap-10 sm:grid-cols-3">
+        <div className="mt-12 grid gap-8 sm:grid-cols-3">
           {stepKeys.map((step, i) => (
             <motion.article
               key={step.title}
-              className="relative flex flex-col rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200/80"
-              initial={reducedMotion ? false : { opacity: 0, y: 20 }}
+              className="relative flex flex-col box-frame overflow-hidden p-0 transition-all duration-200 hover:shadow-md"
+              initial={reducedMotion ? false : { opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: reducedMotion ? 0 : i * 0.1 }}
+              transition={{ duration: 0.4, delay: reducedMotion ? 0 : i * 0.08 }}
             >
-              <span
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-[#3F36D1] text-sm font-bold text-white"
-                aria-hidden="true"
-              >
-                {i + 1}
-              </span>
-              <h3 className="mt-4 text-lg font-semibold text-gray-900">
-                {t.howItWorks[step.title]}
-              </h3>
-              <p className="mt-2 text-[#4B5563]">{t.howItWorks[step.desc]}</p>
+              <div className="relative h-44 w-full shrink-0 overflow-hidden sm:h-52">
+                <img src={step.img} alt="" className="h-full w-full object-cover" />
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <span className="text-xs font-semibold uppercase tracking-wider text-[var(--accent)]" aria-hidden="true">
+                  Step {i + 1}
+                </span>
+                <h3 className="mt-1 text-lg font-semibold text-slate-900">
+                  {t.howItWorks[step.title]}
+                </h3>
+                <p className="mt-2 text-slate-600 leading-relaxed">{t.howItWorks[step.desc]}</p>
+              </div>
             </motion.article>
           ))}
         </div>

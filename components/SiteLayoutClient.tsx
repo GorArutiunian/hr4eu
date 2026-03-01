@@ -11,7 +11,7 @@ export default function SiteLayoutClient({
   return (
     <>
       <Navbar />
-      <main id="main-content">{children}</main>
+      <main id="main-content" className="relative z-10">{children}</main>
       <Footer />
     </>
   );

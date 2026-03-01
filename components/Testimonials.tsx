@@ -3,45 +3,66 @@
 import { motion } from "framer-motion";
 import { useLocale } from "@/context/LocaleContext";
 
+const testimonialImages = [
+  "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=85",
+  "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=85",
+  "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=85",
+];
+
 export default function Testimonials() {
   const { t } = useLocale();
   const items = (t.testimonials as { items?: readonly { quote: string; role: string }[] }).items ?? [];
 
   return (
     <section
-      className="relative overflow-hidden bg-white px-4 py-16 sm:px-6 lg:px-8"
+      className="relative overflow-hidden bg-palette-section section-pad"
       aria-labelledby="testimonials-heading"
     >
-      <div className="pointer-events-none absolute left-1/4 top-0 h-72 w-72 rounded-full bg-[#3F36D1]/[0.04]" style={{ filter: "blur(70px)" }} aria-hidden />
-      <div className="relative mx-auto max-w-6xl">
+      <div className="content-width relative">
         <motion.div
           className="text-center"
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.4 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
         >
-          <h2 id="testimonials-heading" className="text-3xl font-bold text-gray-900 sm:text-4xl">
+          <h2 id="testimonials-heading" className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
             {t.testimonials.title}
           </h2>
-          <p className="mx-auto mt-3 max-w-xl text-lg text-[#4B5563]">
+          <p className="mx-auto mt-4 max-w-xl text-lg text-slate-600">
             {t.testimonials.subtitle}
           </p>
         </motion.div>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((item, i) => (
             <motion.blockquote
               key={item.role}
-              className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200/80"
-              initial={{ opacity: 0, y: 16 }}
+              className="box-frame-blue overflow-hidden p-0 transition-all duration-200 hover:shadow-md"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.35, delay: i * 0.08 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.4, delay: i * 0.08 }}
             >
-              <p className="text-[#4B5563]">&ldquo;{item.quote}&rdquo;</p>
-              <footer className="mt-4 text-sm font-medium text-gray-700">
-                — {item.role}
-              </footer>
+              <div className="h-52 w-full shrink-0 overflow-hidden bg-slate-100">
+                <img
+                  src={testimonialImages[i % testimonialImages.length]}
+                  alt=""
+                  className="h-full w-full object-cover object-[center_28%]"
+                />
+              </div>
+              <div className="p-6">
+                <p className="text-slate-600 leading-relaxed">&ldquo;{item.quote}&rdquo;</p>
+                <footer className="mt-4 flex items-center gap-3 text-sm font-medium text-slate-700">
+                  <span className="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-slate-200">
+                    <img
+                      src={testimonialImages[i % testimonialImages.length]}
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
+                  </span>
+                  — {item.role}
+                </footer>
+              </div>
             </motion.blockquote>
           ))}
         </div>

@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="min-h-screen bg-white text-gray-800 antialiased">
+      <body className="min-h-screen text-slate-900 antialiased">
         <LocaleProvider>{children}</LocaleProvider>
       </body>
     </html>

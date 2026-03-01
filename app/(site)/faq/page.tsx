@@ -9,8 +9,10 @@ export const metadata: Metadata = {
 
 export default function FAQPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
-      <FAQSection />
-    </div>
+    <main className="min-h-screen bg-palette-section section-pad">
+      <div className="content-width mx-auto max-w-4xl px-4">
+        <FAQSection />
+      </div>
+    </main>
   );
 }

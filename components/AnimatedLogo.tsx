@@ -9,7 +9,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import logoPaths from "./logo-paths.json";
 
 const ARROW_PATH_INDEX = 6;
-const BRAND_COLOR = "#3F36D1";
+const BRAND_COLOR = "#2A67C4";
 
 type AnimatedLogoProps = {
   className?: string;
