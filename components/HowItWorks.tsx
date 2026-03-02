@@ -28,7 +28,7 @@ export default function HowItWorks() {
           transition={{ duration: 0.5 }}
         >
           <div className="flex justify-center mb-4">
-            <img src="/logo.png" alt="" className="h-12 w-auto" />
+            <img src="/logo.png" alt="" className="h-20 w-auto sm:h-24 md:h-28 [mix-blend-mode:multiply]" aria-hidden />
           </div>
           <h2
             id="how-hr4eu-works-heading"

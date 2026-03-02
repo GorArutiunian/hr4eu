@@ -42,7 +42,7 @@ export default function Navbar() {
           className="flex items-center gap-2 text-xl font-semibold tracking-tight text-slate-900 transition-colors hover:text-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2 rounded-md"
           aria-label="HR4EU home"
         >
-          <img src="/logo.png" alt="" className="h-14 w-auto sm:h-16" width={56} height={56} />
+          <img src="/logo.png" alt="" className="h-14 w-auto sm:h-16 [mix-blend-mode:multiply]" width={56} height={56} />
           <span className="flex items-baseline">
             <span>HR</span>
             <span className="mx-0.5 text-3xl font-bold text-[var(--accent)] leading-none">4</span>

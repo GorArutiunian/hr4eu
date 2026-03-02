@@ -62,6 +62,7 @@ const carouselImages = [
   "https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=85",
   "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&q=85",
   "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=1200&q=85",
+  "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=85",
 ];
 
 export default function Hero() {
@@ -87,70 +88,46 @@ export default function Hero() {
       <div className="relative z-10 content-width mx-auto px-4">
         <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-8 lg:items-stretch">
           {/* Left: slogan, tagline, CTAs, benefit list */}
-          <div className="flex flex-col justify-center">
+          <div className="flex min-w-0 flex-col justify-center">
             <motion.h1
               id="hero-heading"
-              className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl lg:text-6xl xl:text-[3.5rem]"
+              className="max-w-full uppercase text-[var(--accent-orange)] text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl [font-family:var(--font-graffiti-smooth),var(--font-graffiti),system-ui,sans-serif]"
               initial={reducedMotion ? false : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              {t.hero.slogan}
+              <span className="block">{(t.hero as { sloganLine1?: string }).sloganLine1 ?? t.hero.slogan.split(" ")[0]}</span>
+              <span className="mt-0.5 block pl-[28%] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl" aria-hidden>
+                {(t.hero as { sloganLine2?: string }).sloganLine2 ?? t.hero.slogan.split(" ").slice(1).join(" ")}
+              </span>
             </motion.h1>
-            <motion.p
-              className="mt-4 text-lg font-medium text-slate-500 sm:text-xl"
-              initial={reducedMotion ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.4 }}
-            >
-              {t.hero.tagline}
-            </motion.p>
-            <motion.div
-              className="mt-5 flex flex-wrap gap-4"
-              initial={reducedMotion ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-            >
-              <Link
-                href="/contact"
-                className="inline-flex items-center justify-center rounded-full bg-palette-accent px-7 py-4 text-base font-semibold text-white transition-all hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
-                aria-label={t.hero.ctaPrimary}
-              >
-                {t.hero.ctaPrimary}
-              </Link>
-              <Link
-                href="#services"
-                className="inline-flex items-center justify-center rounded-full border-2 border-[var(--accent-orange)] bg-transparent px-7 py-4 text-base font-semibold text-[var(--accent-orange)] transition-all hover:bg-[var(--accent-orange-light)] focus:outline-none focus:ring-2 focus:ring-[var(--accent-orange)] focus:ring-offset-2"
-                aria-label={t.hero.ctaSecondary}
-              >
-                {t.hero.ctaSecondary}
-              </Link>
-            </motion.div>
 
-            {/* List – 4 benefit sentences (logo + graph not in list); all clickable */}
-            <div className="mt-6 flex flex-col gap-4" aria-label="Key benefits">
+            {/* List – 4 benefit sentences + Financial examples (all clickable) */}
+            <div className="mt-6 flex flex-col gap-5" aria-label="Key benefits">
               {costPointKeys.map((key, i) => {
                 const isActive = i + 2 === activeIndex; // slides 2–5 match list items 0–3
                 return (
                   <Link
                     key={key}
                     href={`/benefits#benefit-${i + 1}`}
-                    className={`group flex w-full items-center gap-4 text-left transition-all duration-300 focus:outline-none py-2 ${
+                    className={`group flex w-full items-center gap-4 text-left transition-all duration-300 focus:outline-none py-2.5 ${
                       isActive ? "opacity-100" : "opacity-60 hover:opacity-90"
                     }`}
                   >
-                    <span
-                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-all ${
-                        isActive ? "bg-[var(--accent)] text-white" : "bg-slate-200 text-slate-600 group-hover:bg-slate-300"
+                    <motion.span
+                      className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full transition-colors duration-300 ${
+                        isActive ? "bg-[var(--accent-orange)] text-white" : "bg-slate-200 text-slate-600 group-hover:bg-slate-300"
                       }`}
                       aria-hidden
+                      animate={{ scale: isActive ? 1.35 : 1 }}
+                      transition={{ type: "spring", stiffness: 400, damping: 25 }}
                     >
                       <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                       </svg>
-                    </span>
+                    </motion.span>
                     <span
-                      className={`flex-1 min-w-0 text-base font-semibold leading-snug transition-colors sm:text-lg ${
+                      className={`flex-1 min-w-0 text-lg font-semibold leading-snug transition-colors sm:text-xl md:text-2xl ${
                         isActive ? "text-slate-900" : "text-slate-600 group-hover:text-slate-900"
                       }`}
                     >
@@ -164,6 +141,22 @@ export default function Hero() {
                   </Link>
                 );
               })}
+              <Link
+                href="/financials"
+                className="group flex w-full items-center gap-4 text-left transition-all duration-300 focus:outline-none py-2.5 opacity-60 hover:opacity-90"
+              >
+                <span
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-200 text-slate-600 transition-colors group-hover:bg-slate-300"
+                  aria-hidden
+                >
+                  <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </span>
+                <span className="flex-1 min-w-0 text-lg font-semibold leading-snug text-slate-600 transition-colors group-hover:text-slate-900 sm:text-xl md:text-2xl">
+                  {t.hero.ctaFinancialsExample}
+                </span>
+              </Link>
             </div>
           </div>
 
@@ -185,34 +178,28 @@ export default function Hero() {
                   className="absolute inset-0"
                 >
                   {activeIndex === 0 ? (
-                    <div className="absolute inset-0 flex items-center justify-center bg-[var(--hero-bright-blue)] p-2 sm:p-4">
-                      <img src="/logo.png" alt="HR4EU" className="h-full w-auto max-w-full object-contain [mix-blend-mode:multiply]" />
+                    <div className="absolute inset-0 flex items-center justify-center bg-white p-2 sm:p-4">
+                      <img src="/logo.png" alt="HR4EU" className="h-full w-auto max-w-full object-contain" />
                     </div>
                   ) : activeIndex === 1 ? (
                     <div className="absolute inset-0">
                       <CostComparisonGraph />
                     </div>
                   ) : activeIndex === 2 ? (
-                    /* Cost saving slide: graph only + sentence overlay (no image) */
-                    <>
-                      <div className="absolute inset-0">
-                        <CostComparisonGraph />
-                      </div>
-                      <div className="absolute inset-0 bg-slate-900/30 flex flex-col items-center justify-end pb-12 pt-8">
-                        <p className="max-w-lg text-center text-lg font-bold leading-snug drop-shadow-lg text-white sm:text-xl">
-                          {t.hero[costPointKeys[0]]}
-                        </p>
-                      </div>
-                    </>
+                    /* Save 40–60 slide: image only, no text overlay */
+                    <img
+                      src={carouselImages[0]}
+                      alt=""
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
                   ) : (
                     <img
-                      src={carouselImages[activeIndex - 3]}
+                      src={carouselImages[activeIndex - 2]}
                       alt=""
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   )}
-                  {/* Text overlay only for cost-saving graph (2) and photo slides (3–5) */}
-                  {activeIndex >= 3 && (
+                  {activeIndex >= 3 ? (
                     <>
                       <div className="absolute inset-0 bg-slate-900/50" />
                       <div className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-8">
@@ -224,7 +211,7 @@ export default function Hero() {
                         </p>
                       </div>
                     </>
-                  )}
+                  ) : null}
                 </motion.div>
               </AnimatePresence>
 

@@ -10,26 +10,43 @@ const benefitKeys = [
   "benefit2",
   "benefit3",
   "benefit5",
+  "benefit4",
+  "benefit6",
+  "benefit7",
+  "benefit8",
 ] as const;
 
-const costPointKeys = ["costPoint1", "costPoint2", "costPoint3", "costPoint5"] as const;
+const totalBenefits = benefitKeys.length;
 
-function getInitialIndex() {
-  if (typeof window === "undefined") return 0;
+const heroPillKeys = ["costPoint1", "costPoint2", "costPoint3", "costPoint5"] as const;
+const pageOnlyPillKeys = ["pill4", "pill6", "pill7", "pill8"] as const;
+
+function getPillLabel(bp: Record<string, string>, hero: Record<string, string>, i: number): string {
+  if (i < heroPillKeys.length) return hero[heroPillKeys[i]] ?? "";
+  const pageKey = pageOnlyPillKeys[i - heroPillKeys.length];
+  return bp[pageKey] ?? "";
+}
+
+function getInitialIndex(): number {
+  if (typeof window === "undefined") return -1;
   const hash = window.location.hash;
   const m = hash?.match(/^#benefit-(\d+)$/);
   if (m) {
     const n = parseInt(m[1], 10);
-    if (n >= 1 && n <= 4) return n - 1;
+    if (n >= 1 && n <= totalBenefits) return n - 1;
   }
-  return 0;
+  return -1;
 }
 
 export default function BenefitsPage() {
   const { t } = useLocale();
   const bp = t.benefitsPage;
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(-1);
   const cardRefs = useRef<(HTMLLIElement | null)[]>([]);
+
+  function scrollToCenterCard(i: number) {
+    if (i >= 0) cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 
   useEffect(() => {
     const i = getInitialIndex();
@@ -37,32 +54,35 @@ export default function BenefitsPage() {
     const onHashChange = () => {
       const idx = getInitialIndex();
       setSelectedIndex(idx);
-      cardRefs.current[idx]?.scrollIntoView({ behavior: "smooth", block: "start" });
+      if (idx >= 0) scrollToCenterCard(idx);
     };
     window.addEventListener("hashchange", onHashChange);
-    const timeoutId = setTimeout(() => cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
-    return () => {
-      window.removeEventListener("hashchange", onHashChange);
-      clearTimeout(timeoutId);
-    };
+    if (i >= 0) {
+      const timeoutId = setTimeout(() => scrollToCenterCard(i), 100);
+      return () => {
+        window.removeEventListener("hashchange", onHashChange);
+        clearTimeout(timeoutId);
+      };
+    }
+    return () => window.removeEventListener("hashchange", onHashChange);
   }, []);
 
   function handleSelect(i: number) {
     setSelectedIndex(i);
     window.history.replaceState(null, "", `#benefit-${i + 1}`);
-    cardRefs.current[i]?.scrollIntoView({ behavior: "smooth", block: "start" });
+    scrollToCenterCard(i);
   }
 
   return (
     <main className="min-h-screen bg-palette-section">
-      {/* Single header block */}
+      {/* Header like How HR4EU Works: logo + title with company name */}
       <div className="content-width mx-auto px-4 pt-10 pb-8 sm:pt-14 sm:pb-12">
         <div className="mx-auto max-w-3xl text-center">
           <div className="flex justify-center mb-6">
-            <img src="/logo.png" alt="" className="h-20 w-auto sm:h-24" />
+            <img src="/logo.png" alt="" className="h-20 w-auto sm:h-24 md:h-28 [mix-blend-mode:multiply]" aria-hidden />
           </div>
-          <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl md:text-5xl">
-            {bp.title}
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl" id="benefits-list-heading">
+            <HR4EUInline>{(bp as { titleWithBrand?: string }).titleWithBrand ?? bp.title}</HR4EUInline>
           </h1>
           <p className="mt-4 text-lg text-slate-600 sm:text-xl">
             {bp.subtitle}
@@ -72,17 +92,18 @@ export default function BenefitsPage() {
           </p>
         </div>
 
-        {/* Benefit selector – compact strip */}
-        <div className="mt-10 mx-auto max-w-2xl">
+        {/* Benefit selector pills – side by side, chosen one highlighted */}
+        <div className="mt-10 mx-auto max-w-4xl">
           <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3 text-center">
             Choose a benefit
           </p>
           <div className="flex flex-wrap justify-center gap-2">
-            {costPointKeys.map((key, i) => {
+            {benefitKeys.map((_, i) => {
               const isActive = i === selectedIndex;
+              const label = getPillLabel(bp as Record<string, string>, t.hero as Record<string, string>, i);
               return (
                 <button
-                  key={key}
+                  key={i}
                   type="button"
                   onClick={() => handleSelect(i)}
                   className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-all ${
@@ -91,7 +112,7 @@ export default function BenefitsPage() {
                       : "bg-white text-slate-600 ring-1 ring-slate-200 hover:ring-[var(--accent)] hover:text-slate-900"
                   }`}
                 >
-                  {t.hero[key].length > 26 ? t.hero[key].slice(0, 25) + "…" : t.hero[key]}
+                  {label.length > 28 ? label.slice(0, 27) + "…" : label}
                 </button>
               );
             })}
@@ -99,12 +120,12 @@ export default function BenefitsPage() {
         </div>
       </div>
 
-      {/* Benefit cards – one section, no duplicate heading */}
+      {/* Full list of benefits – all 4 cards, not separated */}
       <section className="content-width mx-auto px-4 pb-14 sm:pb-20" aria-labelledby="benefits-list-heading">
         <h2 id="benefits-list-heading" className="sr-only">
           Benefit details
         </h2>
-        <ul className="space-y-6 sm:space-y-8">
+        <ul className="w-full space-y-6 sm:space-y-8">
           {benefitKeys.map((key, i) => {
             const titleKey = `${key}Title` as keyof typeof bp;
             const descKey = `${key}Desc` as keyof typeof bp;
@@ -133,7 +154,7 @@ export default function BenefitsPage() {
                       {title}
                     </h3>
                     <p className="mt-3 text-slate-600 leading-relaxed sm:text-lg">
-                      {desc}
+                      <HR4EUInline>{desc}</HR4EUInline>
                     </p>
                   </div>
                 </div>
@@ -144,7 +165,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* What we do */}
-      <section className="content-width mx-auto px-4 pb-14" aria-labelledby="what-we-do-heading">
+      <section className="w-full px-4 sm:px-6 lg:px-8 pb-14" aria-labelledby="what-we-do-heading">
         <div className="rounded-2xl bg-[#eef2ff] p-6 sm:p-8 md:p-10">
           <h2 id="what-we-do-heading" className="text-xl font-bold text-slate-900 sm:text-2xl">
             {bp.whatWeDo}
@@ -156,7 +177,7 @@ export default function BenefitsPage() {
       </section>
 
       {/* CTA */}
-      <div className="content-width mx-auto px-4 pb-16 sm:pb-20">
+      <div className="w-full px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
         <div className="rounded-2xl bg-[var(--accent)] p-8 text-center text-white sm:p-10">
           <h2 className="text-xl font-semibold sm:text-2xl">{bp.ctaTitle}</h2>
           <p className="mt-2 text-white/90">{bp.ctaSubtitle}</p>
