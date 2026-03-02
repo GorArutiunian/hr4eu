@@ -6,9 +6,9 @@
 export function HR4EUBrand({ className = "" }: { className?: string }) {
   return (
     <span className={`inline-flex items-baseline ${className}`}>
-      <span>HR</span>
-      <span className="mx-0.5 text-[1.2em] font-bold text-[var(--accent)] leading-none">4</span>
-      <span>EU</span>
+      <span className="font-semibold">HR</span>
+      <span className="mx-0.5 text-[1.6em] font-bold text-[var(--accent)] leading-none">4</span>
+      <span className="font-semibold">EU</span>
     </span>
   );
 }

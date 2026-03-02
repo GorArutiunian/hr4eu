@@ -27,6 +27,33 @@ function getPillLabel(bp: Record<string, string>, hero: Record<string, string>, 
   return bp[pageKey] ?? "";
 }
 
+const heroBenefitMap: Record<string, { titleKey: string; descKey: string }> = {
+  benefit1: { titleKey: "costPoint1", descKey: "costPoint1Detail" },
+  benefit2: { titleKey: "costPoint2", descKey: "costPoint2Detail" },
+  benefit3: { titleKey: "costPoint3", descKey: "costPoint3Detail" },
+  benefit5: { titleKey: "costPoint5", descKey: "costPoint5Detail" },
+};
+
+function getBenefitTitleAndDesc(
+  key: string,
+  bp: Record<string, string>,
+  hero: Record<string, string>
+): { title: string; desc: string } {
+  const heroMap = heroBenefitMap[key];
+  if (heroMap) {
+    return {
+      title: (hero[heroMap.titleKey] as string) ?? "",
+      desc: (hero[heroMap.descKey] as string) ?? "",
+    };
+  }
+  const titleKey = `${key}Title` as keyof typeof bp;
+  const descKey = `${key}Desc` as keyof typeof bp;
+  return {
+    title: typeof bp[titleKey] === "string" ? (bp[titleKey] as string) : "",
+    desc: typeof bp[descKey] === "string" ? (bp[descKey] as string) : "",
+  };
+}
+
 function getInitialIndex(): number {
   if (typeof window === "undefined") return -1;
   const hash = window.location.hash;
@@ -41,6 +68,7 @@ function getInitialIndex(): number {
 export default function BenefitsPage() {
   const { t } = useLocale();
   const bp = t.benefitsPage;
+  const hero = t.hero;
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const cardRefs = useRef<(HTMLLIElement | null)[]>([]);
 
@@ -84,40 +112,8 @@ export default function BenefitsPage() {
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl" id="benefits-list-heading">
             <HR4EUInline>{(bp as { titleWithBrand?: string }).titleWithBrand ?? bp.title}</HR4EUInline>
           </h1>
-          <p className="mt-4 text-lg text-slate-600 sm:text-xl">
-            {bp.subtitle}
-          </p>
-          <p className="mt-6 text-base text-slate-600 leading-relaxed">
-            <HR4EUInline>{bp.intro}</HR4EUInline>
-          </p>
         </div>
 
-        {/* Benefit selector pills – side by side, chosen one highlighted */}
-        <div className="mt-10 mx-auto max-w-4xl">
-          <p className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3 text-center">
-            Choose a benefit
-          </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {benefitKeys.map((_, i) => {
-              const isActive = i === selectedIndex;
-              const label = getPillLabel(bp as Record<string, string>, t.hero as Record<string, string>, i);
-              return (
-                <button
-                  key={i}
-                  type="button"
-                  onClick={() => handleSelect(i)}
-                  className={`rounded-full px-4 py-2.5 text-sm font-semibold transition-all ${
-                    isActive
-                      ? "bg-[var(--accent)] text-white shadow-md"
-                      : "bg-white text-slate-600 ring-1 ring-slate-200 hover:ring-[var(--accent)] hover:text-slate-900"
-                  }`}
-                >
-                  {label.length > 28 ? label.slice(0, 27) + "…" : label}
-                </button>
-              );
-            })}
-          </div>
-        </div>
       </div>
 
       {/* Full list of benefits – all 4 cards, not separated */}
@@ -127,11 +123,8 @@ export default function BenefitsPage() {
         </h2>
         <ul className="w-full space-y-6 sm:space-y-8">
           {benefitKeys.map((key, i) => {
-            const titleKey = `${key}Title` as keyof typeof bp;
-            const descKey = `${key}Desc` as keyof typeof bp;
             const isSelected = i === selectedIndex;
-            const title = typeof bp[titleKey] === "string" ? bp[titleKey] : "";
-            const desc = typeof bp[descKey] === "string" ? bp[descKey] : "";
+            const { title, desc } = getBenefitTitleAndDesc(key, bp, hero);
             return (
               <li
                 key={key}

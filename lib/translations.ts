@@ -8,7 +8,7 @@ export const translations = {
       benefits: "Why choose us",
       faq: "FAQ",
       contact: "Contact",
-      bookCall: "Book a call",
+      bookCall: "Contact us",
     },
     hero: {
       slogan: "Outsourcing differently",
@@ -25,11 +25,16 @@ export const translations = {
       whyChooseUs: "Why to choose us",
       nowShowing: "Now showing",
       stickerText: "Your effectivity is our goal",
-      costPoint1: "Save 40–60% on payrolls",
-      costPoint2: "No benefits, no holiday",
-      costPoint3: "Physical training at your company",
+      costPoint1: "Save 40–60% on payrolls each year",
+      costPoint2: "No benefits, no holiday overhead",
+      costPoint3: "Physical training at your company on-site",
       costPoint4: "No upfront payments – you only pay for work actually delivered",
-      costPoint5: "We are available 24/7 in Prague",
+      costPoint5: "We are available 24/?7 in Prague for you",
+      // English detail texts for hero slides
+      costPoint1Detail: "Save 40–60% on payrolls compared to a classic employment model. Many clients achieve these savings while scaling their team with 3–5 specialists for roughly the cost of one EU hire.",
+      costPoint2Detail: "No obligation to provide benefits, holiday pay, or other employment extras. You receive a single invoice for work delivered, with transparent pricing and no hidden fees.",
+      costPoint3Detail: "We can train specialists directly at your company to follow your internal processes. In-person meetings can be scheduled regularly to evaluate work and align on next steps.",
+      costPoint5Detail: "We are available 24/7 in Prague, by phone and email, in English or Czech. You have full control and visibility, with the ability to react immediately to any changes.",
       assuranceTitle: "Personal and language assurance",
       assurance1: "We communicate in Czech or English according to your preference.",
       assurance2: "You can train our specialists in person at your office according to your internal processes.",
@@ -48,7 +53,7 @@ export const translations = {
       savingsLine: "You will save {{amount}} CZK per year for one employee",
     },
     services: {
-      title: "Services",
+      title: "HR4EU Services",
       subtitle: "Cross-border team building: one EU lead, one Armenian delivery team.",
       learnMore: "Learn more",
     },
@@ -89,7 +94,7 @@ export const translations = {
     cta: {
       title: "Ready to build your hybrid EU–Armenia team?",
       subtitle: "Book a discovery call or send us an email—we'll respond within one business day.",
-      bookCall: "Book a call",
+      bookCall: "Contact us",
       emailUs: "Email us",
     },
     footer: {
@@ -151,6 +156,8 @@ export const translations = {
     contact: {
       title: "Contact us",
       subtitle: "Book a discovery call or send us a message. We'll respond within one business day.",
+      phone: "Phone",
+      phoneNumber: "+420 123 456 789",
       name: "Name",
       email: "Email",
       message: "Message",
@@ -222,7 +229,7 @@ export const translations = {
       whatWeDoDesc: "We build and manage hybrid teams: one EU-facing lead who owns communication with you, supported by 3–5 Armenia-based specialists. We recruit, onboard, and manage the team. You define the outcomes; we deliver. Our services span IT & Engineering, Data & Analytics, Accounting & Finance, Marketing & Growth, Administrative & Logistics, and Operations & Support.",
       ctaTitle: "Ready to explore?",
       ctaSubtitle: "Book a discovery call to discuss how we can help your business.",
-      bookCall: "Book a call",
+      bookCall: "Contact us",
     },
     financialsPage: {
       title: "Financial examples",
@@ -233,7 +240,7 @@ export const translations = {
       point3: "The savings add up every month. Scale your team without scaling your fixed costs.",
       ctaTitle: "Ready to see your numbers?",
       ctaSubtitle: "Book a call and we’ll show you a tailored comparison.",
-      bookCall: "Book a call",
+      bookCall: "Contact us",
     },
     serviceShortDesc: {
       it: "Software development, DevOps, and technical teams built for European product and engineering needs.",
@@ -251,7 +258,7 @@ export const translations = {
       benefits: "Proč si vybrat nás",
       faq: "FAQ",
       contact: "Kontakt",
-      bookCall: "Objednat hovor",
+      bookCall: "Kontaktujte nás",
     },
     hero: {
       slogan: "Outsourcing jinak",
@@ -260,7 +267,7 @@ export const translations = {
       tagline: "Jeden vedoucí v EU. Jeden tým. Jeden jasný výsledek.",
       ctaPrimary: "Objednat úvodní hovor",
       ctaSecondary: "Prohlédnout služby",
-      ctaFinancialsExample: "Příklad financí",
+      ctaFinancialsExample: "Grafický přehled ukazující Vaše úspory.",
       chip1: "Snížení provozních nákladů až o 40–60 %",
       chip2: "Vyhrazená komunikace směrem do EU",
       chip3: "Řízené týmy specialistů z Arménie",
@@ -268,11 +275,17 @@ export const translations = {
       whyChooseUs: "Proč si vybrat nás",
       nowShowing: "Právě zobrazeno",
       stickerText: "Vaše efektivita je náš cíl",
-      costPoint1: "Ušetřete 40–60 % na mzdách",
-      costPoint2: "Žádné benefity, žádná dovolená",
-      costPoint3: "Fyzický trénink ve vaší firmě",
+      // Main hero list sentences
+      costPoint1: "Ušetříte 40–60 % na mzdách.",
+      costPoint2: "Žádné dovolené, nemocenské a jiné benefity.",
+      costPoint3: "Školení bude realizováno přímo v prostorách Vaší společnosti.",
       costPoint4: "Žádné platby předem – hradíte pouze skutečně odvedenou práci",
-      costPoint5: "Jsme k dispozici 24/7 v Praze",
+      costPoint5: "Jsme Vám plně k dispozici 24/7, přímo v Praze.",
+      // Detail texts used on hero images
+      costPoint1Detail: "Úsporu nákladů ve výši 40–60 % oproti klasickému zaměstnaneckému modelu. Mnoho klientů dosahuje těchto úspor při škálování týmu o 3–5 specialistů za cenu zhruba jednoho náboru v EU.",
+      costPoint2Detail: "Tato forma spolupráce je realizována bez nároku na dovolenou, nemocenské dávky či jiné zaměstnanecké výhody. Obdržíte jednu fakturu za odvedenou práci s transparentními cenami a bez skrytých poplatků.",
+      costPoint3Detail: "Naše specialisty můžete osobně zaškolit přímo ve Vaší kanceláři podle Vašich interních procesů. Osobní setkání lze nastavit pravidelně za účelem vyhodnocení práce a plánování dalších kroků.",
+      costPoint5Detail: "Komunikujeme v českém nebo anglickém jazyce dle Vaší preference. Jsme Vám každý den k dispozici telefonicky i e-mailem na území ČR. Máte plnou kontrolu, přehled i možnost okamžité reakce na případné změny.",
       assuranceTitle: "Osobní a jazyková jistota",
       assurance1: "Komunikujeme v českém nebo anglickém jazyce dle Vaší preference.",
       assurance2: "Naše specialisty můžete osobně zaškolit přímo ve Vaší kanceláři podle Vašich interních procesů.",
@@ -291,7 +304,7 @@ export const translations = {
       savingsLine: "Ročně ušetříte {{amount}} Kč na jednoho zaměstnance",
     },
     services: {
-      title: "Služby",
+      title: "Služby HR4EU",
       subtitle: "Budování týmů přes hranice: jeden vedoucí v EU, jeden arménský realizační tým.",
       learnMore: "Více informací",
     },
@@ -332,7 +345,7 @@ export const translations = {
     cta: {
       title: "Chcete postavit hybridní tým EU–Arménie?",
       subtitle: "Objednejte úvodní hovor nebo napište—odpovíme do jednoho pracovního dne.",
-      bookCall: "Objednat hovor",
+      bookCall: "Kontaktujte nás",
       emailUs: "Napsat e-mail",
     },
     footer: {
@@ -394,6 +407,8 @@ export const translations = {
     contact: {
       title: "Kontaktujte nás",
       subtitle: "Objednejte úvodní hovor nebo napište. Odpovíme do jednoho pracovního dne.",
+      phone: "Telefon",
+      phoneNumber: "+420 123 456 789",
       name: "Jméno",
       email: "E-mail",
       message: "Zpráva",
@@ -465,7 +480,7 @@ export const translations = {
       whatWeDoDesc: "Budujeme a řídíme hybridní týmy: jeden vedoucí směrem do EU, který má na starosti komunikaci s vámi, podporovaný 3–5 specialisty působícími v Arménii. Provádíme nábor, onboarding a řízení týmu. Vy definujete výsledky; my dodáváme. Naše služby pokrývají IT a inženýring, data a analytiku, účetnictví a finance, marketing a růst, administrativu a logistiku a operace a podporu.",
       ctaTitle: "Chcete se dozvědět více?",
       ctaSubtitle: "Objednejte úvodní hovor a probereme, jak můžeme pomoci vaší firmě.",
-      bookCall: "Objednat hovor",
+      bookCall: "Kontaktujte nás",
     },
     financialsPage: {
       title: "Příklad financí",
@@ -476,7 +491,7 @@ export const translations = {
       point3: "Úspory se sčítají každý měsíc. Škálujte tým bez navyšování fixních nákladů.",
       ctaTitle: "Chcete vidět své čísla?",
       ctaSubtitle: "Objednejte hovor a připravíme vám srovnání na míru.",
-      bookCall: "Objednat hovor",
+      bookCall: "Kontaktujte nás",
     },
     serviceShortDesc: {
       it: "Vývoj softwaru, DevOps a technické týmy pro evropské produkty a inženýring.",

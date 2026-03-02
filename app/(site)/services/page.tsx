@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { services } from "@/lib/services";
 import { useLocale } from "@/context/LocaleContext";
+import { HR4EUInline } from "@/components/HR4EUBrand";
 
 export default function ServicesIndexPage() {
   const { t } = useLocale();
@@ -10,29 +11,18 @@ export default function ServicesIndexPage() {
   return (
     <main className="min-h-screen bg-palette-section section-pad">
       <div className="content-width mx-auto px-4">
-        <div className="rounded-2xl bg-white/80 px-6 py-5 shadow-md ring-1 ring-[var(--accent)]/20">
-          <div className="flex items-center gap-4">
-            <img src="/logo.png" alt="" className="h-12 w-auto shrink-0" />
-            <div>
-          <span className="inline-block rounded-full bg-palette-accent px-4 py-1.5 text-sm font-semibold text-white">
-            What we offer
-          </span>
-          <h1 className="mt-4 text-3xl font-bold text-palette-fg sm:text-4xl">
-            {t.services.title}
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="mb-6 flex justify-center">
+            <img src="/logo.png" alt="" className="h-20 w-auto sm:h-24 md:h-28 [mix-blend-mode:multiply]" aria-hidden />
+          </div>
+          <h1 className="text-3xl font-bold tracking-tight text-palette-fg sm:text-4xl md:text-5xl">
+            <HR4EUInline className="text-4xl sm:text-5xl md:text-6xl">{t.services.title}</HR4EUInline>
           </h1>
-          <p className="mt-3 max-w-2xl text-lg text-palette-muted">
+          <p className="mt-4 text-lg text-palette-muted sm:text-xl">
             {t.services.subtitle}
           </p>
-            </div>
-          </div>
         </div>
-        <div className="mt-10 overflow-hidden rounded-2xl border-2 border-[var(--accent-orange)] shadow-md ring-2 ring-[var(--accent-orange)]/20">
-          <img
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=85"
-            alt=""
-            className="h-48 w-full object-cover sm:h-56"
-          />
-        </div>
+
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, i) => {
             const title =

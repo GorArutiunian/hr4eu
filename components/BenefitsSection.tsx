@@ -27,7 +27,6 @@ const icons = [
 
 export default function BenefitsSection() {
   const { t } = useLocale();
-  const industryList = (t.benefits as { industryList?: readonly string[] }).industryList ?? [];
 
   return (
     <section
@@ -79,27 +78,6 @@ export default function BenefitsSection() {
             </motion.div>
           ))}
         </div>
-        <motion.div
-          className="mt-14"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-        >
-          <h3 className="text-lg font-semibold text-slate-900">
-            {t.benefits.industries}
-          </h3>
-          <div className="mt-4 flex gap-3 overflow-x-auto pb-2 scrollbar-thin scrollbar-thumb-slate-300 scrollbar-track-transparent">
-            {industryList.map((industry) => (
-              <span
-                key={industry}
-                className="shrink-0 box-frame-pill-blue px-4 py-2 text-sm font-medium text-palette-muted"
-              >
-                {industry}
-              </span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );

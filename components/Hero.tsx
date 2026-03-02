@@ -65,12 +65,27 @@ const carouselImages = [
   "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=85",
 ];
 
+const slides = [
+  { kind: "graph" as const },
+  { kind: "benefit" as const, key: "costPoint1" as const, imageIndex: 0 },
+  { kind: "graph" as const },
+  { kind: "benefit" as const, key: "costPoint2" as const, imageIndex: 1 },
+  { kind: "graph" as const },
+  { kind: "benefit" as const, key: "costPoint3" as const, imageIndex: 2 },
+  { kind: "graph" as const },
+  { kind: "benefit" as const, key: "costPoint5" as const, imageIndex: 3 },
+  { kind: "graph" as const },
+  { kind: "financials" as const, imageIndex: 0 },
+] as const;
+
 export default function Hero() {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const sloganLine2 = (t.hero as { sloganLine2?: string }).sloganLine2 ?? t.hero.slogan.split(" ").slice(1).join(" ");
+  const isCzech = locale === "cs" || sloganLine2 === "jinak";
   const reducedMotion = useReducedMotion();
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const totalSlides = 2 + costPointKeys.length; // logo + graph + 4 benefits
+  const totalSlides = slides.length;
 
   useEffect(() => {
     if (reducedMotion) return;
@@ -91,21 +106,30 @@ export default function Hero() {
           <div className="flex min-w-0 flex-col justify-center">
             <motion.h1
               id="hero-heading"
-              className="max-w-full uppercase text-[var(--accent-orange)] text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl [font-family:var(--font-graffiti-smooth),var(--font-graffiti),system-ui,sans-serif]"
+              className={`max-w-full uppercase text-[#ff6b00] font-extrabold leading-tight tracking-tight [font-family:var(--font-graffiti-smooth),var(--font-graffiti),system-ui,sans-serif] [-webkit-text-stroke:0.5px_rgba(30,64,175,0.4)] ${
+                isCzech ? "text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl" : "text-3xl sm:text-4xl md:text-[3.2rem] lg:text-[3.9rem] xl:text-[4.7rem]"
+              }`}
               initial={reducedMotion ? false : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <span className="block">{(t.hero as { sloganLine1?: string }).sloganLine1 ?? t.hero.slogan.split(" ")[0]}</span>
-              <span className="mt-0.5 block pl-[28%] text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl" aria-hidden>
-                {(t.hero as { sloganLine2?: string }).sloganLine2 ?? t.hero.slogan.split(" ").slice(1).join(" ")}
+              <span className="inline-flex items-baseline gap-3 whitespace-nowrap">
+                <span className={isCzech ? "text-3xl sm:text-4xl md:text-[3.2rem] lg:text-[3.9rem] xl:text-[4.7rem]" : "text-3xl sm:text-4xl md:text-5xl lg:text-6xl"}>
+                  {(t.hero as { sloganLine1?: string }).sloganLine1 ?? t.hero.slogan.split(" ")[0]}
+                </span>
+                <span className={isCzech ? "text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl" : "text-3xl sm:text-4xl md:text-[3.2rem] lg:text-[3.9rem] xl:text-[4.7rem]"}>
+                  {sloganLine2}
+                </span>
               </span>
             </motion.h1>
 
             {/* List – 4 benefit sentences + Financial examples (all clickable) */}
             <div className="mt-6 flex flex-col gap-5" aria-label="Key benefits">
               {costPointKeys.map((key, i) => {
-                const isActive = i + 2 === activeIndex; // slides 2–5 match list items 0–3
+                const slideIndexForKey = slides.findIndex(
+                  (s) => s.kind === "benefit" && s.key === key
+                );
+                const isActive = slideIndexForKey === activeIndex;
                 return (
                   <Link
                     key={key}
@@ -127,7 +151,7 @@ export default function Hero() {
                       </svg>
                     </motion.span>
                     <span
-                      className={`flex-1 min-w-0 text-lg font-semibold leading-snug transition-colors sm:text-xl md:text-2xl ${
+                      className={`flex-1 min-w-0 text-xl font-semibold leading-snug transition-colors sm:text-2xl md:text-[1.8rem] ${
                         isActive ? "text-slate-900" : "text-slate-600 group-hover:text-slate-900"
                       }`}
                     >
@@ -153,7 +177,7 @@ export default function Hero() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
                   </svg>
                 </span>
-                <span className="flex-1 min-w-0 text-lg font-semibold leading-snug text-slate-600 transition-colors group-hover:text-slate-900 sm:text-xl md:text-2xl">
+                <span className="flex-1 min-w-0 text-xl font-semibold leading-snug text-slate-600 transition-colors group-hover:text-slate-900 sm:text-2xl md:text-[1.8rem]">
                   {t.hero.ctaFinancialsExample}
                 </span>
               </Link>
@@ -177,37 +201,29 @@ export default function Hero() {
                   transition={{ duration: 0.4 }}
                   className="absolute inset-0"
                 >
-                  {activeIndex === 0 ? (
-                    <div className="absolute inset-0 flex items-center justify-center bg-white p-2 sm:p-4">
-                      <img src="/logo.png" alt="HR4EU" className="h-full w-auto max-w-full object-contain" />
-                    </div>
-                  ) : activeIndex === 1 ? (
+                  {slides[activeIndex].kind === "graph" || slides[activeIndex].kind === "financials" ? (
                     <div className="absolute inset-0">
                       <CostComparisonGraph />
                     </div>
-                  ) : activeIndex === 2 ? (
-                    /* Save 40–60 slide: image only, no text overlay */
-                    <img
-                      src={carouselImages[0]}
-                      alt=""
-                      className="absolute inset-0 h-full w-full object-cover"
-                    />
                   ) : (
                     <img
-                      src={carouselImages[activeIndex - 2]}
+                      src={carouselImages[slides[activeIndex].imageIndex]}
                       alt=""
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   )}
-                  {activeIndex >= 3 ? (
+                  {slides[activeIndex].kind === "benefit" || slides[activeIndex].kind === "financials" ? (
                     <>
                       <div className="absolute inset-0 bg-slate-900/50" />
-                      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-8">
+                      <div className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-8 pt-8 sm:pt-14">
                         <span className="mb-4 text-sm font-bold uppercase tracking-widest text-white/90">
                           {activeIndex + 1} / {totalSlides}
                         </span>
-                        <p className="max-w-md text-center text-xl font-bold leading-relaxed drop-shadow-md text-white sm:text-2xl lg:text-3xl">
-                          {t.hero[costPointKeys[activeIndex - 2]]}
+                        <p className="max-w-md text-center text-lg font-semibold leading-relaxed drop-shadow-md text-white sm:text-xl lg:text-2xl">
+                          {slides[activeIndex].kind === "benefit"
+                            ? ((t.hero as any)[`${slides[activeIndex].key}Detail`] ??
+                              (t.hero as any)[slides[activeIndex].key])
+                            : t.hero.ctaFinancialsExample}
                         </p>
                       </div>
                     </>

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { services } from "@/lib/services";
 import { useLocale } from "@/context/LocaleContext";
+import { HR4EUInline } from "@/components/HR4EUBrand";
 
 const icons: Record<string, React.ReactNode> = {
   code: (
@@ -60,7 +61,7 @@ export default function ServiceCards() {
             <img src="/logo.png" alt="" className="h-20 w-auto sm:h-24" />
           </div>
           <h2 id="services-heading" className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            {t.services.title}
+            <HR4EUInline>{t.services.title}</HR4EUInline>
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
             {t.services.subtitle}
