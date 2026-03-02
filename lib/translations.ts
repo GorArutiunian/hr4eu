@@ -29,7 +29,7 @@ export const translations = {
       costPoint2: "No benefits, no holiday overhead",
       costPoint3: "Physical training at your company on-site",
       costPoint4: "No upfront payments – you only pay for work actually delivered",
-      costPoint5: "We are available 24/?7 in Prague for you",
+      costPoint5: "We are available 24/7 in Prague for you",
       // English detail texts for hero slides
       costPoint1Detail: "Save 40–60% on payrolls compared to a classic employment model. Many clients achieve these savings while scaling their team with 3–5 specialists for roughly the cost of one EU hire.",
       costPoint2Detail: "No obligation to provide benefits, holiday pay, or other employment extras. You receive a single invoice for work delivered, with transparent pricing and no hidden fees.",
