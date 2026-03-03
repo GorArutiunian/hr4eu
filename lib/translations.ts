@@ -5,7 +5,7 @@ export const translations = {
     nav: {
       services: "Services",
       about: "About",
-      benefits: "Why choose us",
+      benefits: "Why us",
       faq: "FAQ",
       contact: "Contact",
       bookCall: "Contact us",
@@ -17,7 +17,7 @@ export const translations = {
       tagline: "One EU lead. One managed team. One clear outcome.",
       ctaPrimary: "Book a Discovery Call",
       ctaSecondary: "Explore Services",
-      ctaFinancialsExample: "Financials Example",
+      ctaFinancialsExample: "Graphic overview of your savings.",
       chip1: "Reduce operational costs by up to 40–60%",
       chip2: "Dedicated EU-facing communication",
       chip3: "Managed Armenian specialist teams",
@@ -46,11 +46,14 @@ export const translations = {
     costGraph: {
       title: "Monthly cost per employee (CZK)",
       classicLabel: "Classic employment",
+      classicLabelLong: "Your monthly costs per employee at average gross wage 48,295 CZK.",
       highCost: "High cost",
       withUs: "With us",
+      withUsLong: "Your monthly costs when working with us.",
       lowerCost: "Lower cost ✓",
       betterChoice: "BETTER CHOICE",
       savingsLine: "You will save {{amount}} CZK per year for one employee",
+      savingsLineLeft: "When using our services you save on each position up to {{amount}} annually",
     },
     services: {
       title: "HR4EU Services",
@@ -69,8 +72,8 @@ export const translations = {
       step3Desc: "We manage performance, communication, and scaling.",
     },
     benefits: {
-      title: "Why work with us",
-      subtitle: "Credibility and outcomes that matter.",
+      title: "Why HR4EU",
+      subtitle: "",
       faster: "Faster hiring",
       fasterDesc: "Get a full team in weeks, not months—without running multiple EU recruitments.",
       lowerCost: "Lower total cost",
@@ -92,8 +95,8 @@ export const translations = {
       ],
     },
     cta: {
-      title: "Ready to build your hybrid EU–Armenia team?",
-      subtitle: "Book a discovery call or send us an email—we'll respond within one business day.",
+      title: "Contact us for more efficient work process solutions.",
+      subtitle: "",
       bookCall: "Contact us",
       emailUs: "Email us",
     },
@@ -123,7 +126,7 @@ export const translations = {
         {
           question: "What kind of roles can HR4EU provide?",
           answer:
-            "We build teams across IT & Engineering, Data & Analytics, Accounting & Finance, Marketing & Growth, and Operations & Support. Each engagement includes an EU-facing lead and 3–5 Armenia-based specialists tailored to your needs.",
+            "We build teams across IT & Engineering, Data & Analytics, Accounting & Finance, Marketing & Growth, and AI agents and AI automation. Each engagement includes an EU-facing lead and 3–5 Armenia-based specialists tailored to your needs.",
         },
         {
           question: "How quickly can we scale the team?",
@@ -151,6 +154,7 @@ export const translations = {
         "To make cross-border team building transparent, predictable, and scalable—so European companies can grow with the right people, and Armenian specialists can work on meaningful EU projects.",
       missionP2:
         "We focus on quality of hire, clear communication, and long-term partnerships rather than one-off placements.",
+      ctaPrompt: "Ready to get started?",
       getInTouch: "Get in touch",
     },
     contact: {
@@ -197,11 +201,11 @@ export const translations = {
       accounting: "Accounting & Finance Ops",
       marketing: "Marketing & Growth",
       administrative: "Administrative & Logistics",
-      operations: "Operations & Support",
+      operations: "AI agents and AI automation",
     },
     benefitsPage: {
-      title: "Why choose us",
-      titleWithBrand: "Why choose HR4EU",
+      title: "Why us",
+      titleWithBrand: "Why HR4EU",
       subtitle: "Everything we offer and how we help European companies grow.",
       intro: "HR4EU connects European companies with high-performing Armenian specialists through a unique hybrid team model. Here is a complete overview of our benefits and what we do.",
       learnMore: "Learn more",
@@ -226,9 +230,9 @@ export const translations = {
       benefit8Desc: "We draw from a vetted pool of Armenian specialists who have experience with EU clients and remote collaboration. Onboarding is measured in days, not months. You get productive output quickly without the cost and risk of multiple EU hires.",
       pill8: "Proven talent, fast ramp-up",
       whatWeDo: "What we do",
-      whatWeDoDesc: "We build and manage hybrid teams: one EU-facing lead who owns communication with you, supported by 3–5 Armenia-based specialists. We recruit, onboard, and manage the team. You define the outcomes; we deliver. Our services span IT & Engineering, Data & Analytics, Accounting & Finance, Marketing & Growth, Administrative & Logistics, and Operations & Support.",
-      ctaTitle: "Ready to explore?",
-      ctaSubtitle: "Book a discovery call to discuss how we can help your business.",
+      whatWeDoDesc: "We build and manage hybrid teams: one EU-facing lead who owns communication with you, supported by 3–5 Armenia-based specialists. We recruit, onboard, and manage the team. You define the outcomes; we deliver. Our services span IT & Engineering, Data & Analytics, Accounting & Finance, Marketing & Growth, Administrative & Logistics, and AI agents and AI automation.",
+      ctaTitle: "Contact us",
+      ctaSubtitle: "",
       bookCall: "Contact us",
     },
     financialsPage: {
@@ -248,14 +252,14 @@ export const translations = {
       accounting: "Finance, accounting, and back-office teams that integrate with your EU operations.",
       marketing: "Marketing, growth, and content teams to support European campaigns and demand generation.",
       administrative: "Administrative support, logistics coordination, and back-office operations for your EU business.",
-      operations: "Operations, customer support, and shared services teams aligned with your EU workflows.",
+      operations: "AI agents, automation workflows, and intelligent systems to streamline your EU operations.",
     },
   },
   cs: {
     nav: {
       services: "Služby",
       about: "O nás",
-      benefits: "Proč si vybrat nás",
+      benefits: "Proč my",
       faq: "FAQ",
       contact: "Kontakt",
       bookCall: "Kontaktujte nás",
@@ -267,12 +271,12 @@ export const translations = {
       tagline: "Jeden vedoucí v EU. Jeden tým. Jeden jasný výsledek.",
       ctaPrimary: "Objednat úvodní hovor",
       ctaSecondary: "Prohlédnout služby",
-      ctaFinancialsExample: "Grafický přehled ukazující Vaše úspory.",
+      ctaFinancialsExample: "Grafický přehled vašich úspor.",
       chip1: "Snížení provozních nákladů až o 40–60 %",
       chip2: "Vyhrazená komunikace směrem do EU",
       chip3: "Řízené týmy specialistů z Arménie",
       chip4: "Platíte pouze za odvedenou práci",
-      whyChooseUs: "Proč si vybrat nás",
+      whyChooseUs: "Proč my",
       nowShowing: "Právě zobrazeno",
       stickerText: "Vaše efektivita je náš cíl",
       // Main hero list sentences
@@ -297,11 +301,14 @@ export const translations = {
     costGraph: {
       title: "Měsíční náklady na zaměstnance (Kč)",
       classicLabel: "Klasické zaměstnání",
+      classicLabelLong: "Vaše měsíční náklady na jednoho zaměstnance při průměrné hrubé mzdě 48 295 Kč.",
       highCost: "Vysoké náklady",
       withUs: "S námi",
+      withUsLong: "Vaše měsíční náklady při spolupráci s námi.",
       lowerCost: "Nižší náklady ✓",
       betterChoice: "LEPŠÍ VOLBA",
       savingsLine: "Ročně ušetříte {{amount}} Kč na jednoho zaměstnance",
+      savingsLineLeft: "Roční finanční úspora při využití našich služeb činí {{amount}} Kč na jednu pracovní pozici",
     },
     services: {
       title: "Služby HR4EU",
@@ -320,8 +327,8 @@ export const translations = {
       step3Desc: "Řídíme výkonnost, komunikaci a škálování.",
     },
     benefits: {
-      title: "Proč spolupracovat s námi",
-      subtitle: "Důvěryhodnost a výsledky, na kterých záleží.",
+      title: "Proč HR4EU",
+      subtitle: "",
       faster: "Rychlejší nábor",
       fasterDesc: "Kompletní tým za týdny, ne měsíce—bez několika náborů v EU.",
       lowerCost: "Nižší celkové náklady",
@@ -343,8 +350,8 @@ export const translations = {
       ],
     },
     cta: {
-      title: "Chcete postavit hybridní tým EU–Arménie?",
-      subtitle: "Objednejte úvodní hovor nebo napište—odpovíme do jednoho pracovního dne.",
+      title: "Kontaktujte nás pro efektivnější řešení pracovních procesů.",
+      subtitle: "",
       bookCall: "Kontaktujte nás",
       emailUs: "Napsat e-mail",
     },
@@ -402,6 +409,7 @@ export const translations = {
         "Udělat z budování týmů přes hranice transparentní, předvídatelnou a škálovatelnou záležitost—aby evropské firmy mohly růst s těmi správnými lidmi a arménští specialisté mohli pracovat na smysluplných projektech v EU.",
       missionP2:
         "Zaměřujeme se na kvalitu náboru, jasnou komunikaci a dlouhodobá partnerství spíše než na jednorázové umístění.",
+      ctaPrompt: "Chcete začít?",
       getInTouch: "Napište nám",
     },
     contact: {
@@ -448,11 +456,11 @@ export const translations = {
       accounting: "Účetnictví a finance",
       marketing: "Marketing a růst",
       administrative: "Administrativa a logistika",
-      operations: "Operace a podpora",
+      operations: "AI agenti a AI automatizace",
     },
     benefitsPage: {
-      title: "Proč si vybrat nás",
-      titleWithBrand: "Proč si vybrat HR4EU",
+      title: "Proč my",
+      titleWithBrand: "Proč HR4EU",
       subtitle: "Vše, co nabízíme a jak pomáháme evropským firmám růst.",
       intro: "HR4EU propojuje evropské firmy s vysoce výkonnými arménskými specialisty prostřednictvím unikátního modelu hybridního týmu. Zde je kompletní přehled našich výhod a toho, co děláme.",
       learnMore: "Více informací",
@@ -477,9 +485,9 @@ export const translations = {
       benefit8Desc: "Čerpáme z ověřené skupiny arménských specialistů s zkušenostmi s klienty z EU a vzdálenou spoluprací. Onboarding trvá dny, ne měsíce. Získáte produktivní výstupy rychle bez nákladů a rizika několika náborů v EU.",
       pill8: "Ověřené talenty, rychlý rozjezd",
       whatWeDo: "Co děláme",
-      whatWeDoDesc: "Budujeme a řídíme hybridní týmy: jeden vedoucí směrem do EU, který má na starosti komunikaci s vámi, podporovaný 3–5 specialisty působícími v Arménii. Provádíme nábor, onboarding a řízení týmu. Vy definujete výsledky; my dodáváme. Naše služby pokrývají IT a inženýring, data a analytiku, účetnictví a finance, marketing a růst, administrativu a logistiku a operace a podporu.",
-      ctaTitle: "Chcete se dozvědět více?",
-      ctaSubtitle: "Objednejte úvodní hovor a probereme, jak můžeme pomoci vaší firmě.",
+      whatWeDoDesc: "Budujeme a řídíme hybridní týmy: jeden vedoucí směrem do EU, který má na starosti komunikaci s vámi, podporovaný 3–5 specialisty působícími v Arménii. Provádíme nábor, onboarding a řízení týmu. Vy definujete výsledky; my dodáváme. Naše služby pokrývají IT a inženýring, data a analytiku, účetnictví a finance, marketing a růst, administrativu a logistiku a AI agenty a AI automatizaci.",
+      ctaTitle: "Kontaktujte nás",
+      ctaSubtitle: "",
       bookCall: "Kontaktujte nás",
     },
     financialsPage: {
@@ -499,7 +507,7 @@ export const translations = {
       accounting: "Finance, účetnictví a back-office týmy propojené s vaší činností v EU.",
       marketing: "Marketing, růst a obsahové týmy pro evropské kampaně a poptávku.",
       administrative: "Administrativní podpora, koordinace logistiky a back-office operace pro vaši firmu v EU.",
-      operations: "Operace, zákaznická podpora a sdílené služby v souladu s vaší činností v EU.",
+      operations: "AI agenti, automatizační workflow a inteligentní systémy pro zefektivnění vašich operací v EU.",
     },
   },
 } as const;

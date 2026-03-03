@@ -16,9 +16,11 @@ export default function HomePage() {
       <HowItWorks />
       <SectionSeparator variant="accent-line" background="white" lineColor="accent" />
       <BenefitsSection />
+      {/* Separators above CTA removed per design
       <SectionSeparator variant="center-accent" background="orange" lineColor="accent" />
       <Testimonials />
       <SectionSeparator variant="double" background="warm" lineColor="accent" />
+      */}
       <CTASection />
     </>
   );

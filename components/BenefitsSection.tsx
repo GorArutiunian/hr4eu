@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useLocale } from "@/context/LocaleContext";
+import { HR4EUInline } from "@/components/HR4EUBrand";
 
 const benefitKeys = [
   { title: "faster" as const, desc: "fasterDesc" as const },
@@ -35,20 +36,23 @@ export default function BenefitsSection() {
     >
       <div className="content-width">
         <motion.div
+          className="text-center"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
         >
           <h2 id="benefits-heading" className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            {t.benefits.title}
+            <HR4EUInline>{t.benefits.title}</HR4EUInline>
           </h2>
-          <p className="mt-4 text-lg text-slate-600">
-            {t.benefits.subtitle}
-          </p>
+          {t.benefits.subtitle ? (
+            <p className="mt-4 text-lg text-slate-600">
+              {t.benefits.subtitle}
+            </p>
+          ) : null}
         </motion.div>
         <motion.div
-          className="mt-10 overflow-hidden rounded-2xl border-2 border-[var(--accent-orange)]/30 bg-white"
+          className="mt-6 overflow-hidden rounded-2xl border-2 border-[var(--accent-orange)]/30 bg-white"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -60,7 +64,7 @@ export default function BenefitsSection() {
             className="h-56 w-full object-cover object-center sm:h-64"
           />
         </motion.div>
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {benefitKeys.map((b, i) => (
             <motion.div
               key={b.title}

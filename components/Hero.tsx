@@ -100,24 +100,25 @@ export default function Hero() {
       className="relative overflow-hidden bg-hero-bright-blue py-10 lg:py-14"
       aria-labelledby="hero-heading"
     >
-      <div className="relative z-10 content-width mx-auto px-4">
-        <div className="grid gap-6 lg:grid-cols-[1.1fr_1fr] lg:gap-8 lg:items-stretch">
-          {/* Left: slogan, tagline, CTAs, benefit list */}
+      <div className="relative z-10 content-width mx-auto px-4 overflow-x-hidden">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-8 lg:items-stretch lg:min-w-0">
+          {/* Left: slogan, tagline, CTAs, benefit list – wraps to fit, no clipping */}
           <div className="flex min-w-0 flex-col justify-center">
             <motion.h1
               id="hero-heading"
               className={`max-w-full uppercase text-[#ff6b00] font-extrabold leading-tight tracking-tight [font-family:var(--font-graffiti-smooth),var(--font-graffiti),system-ui,sans-serif] [-webkit-text-stroke:0.5px_rgba(30,64,175,0.4)] ${
                 isCzech ? "text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl" : "text-3xl sm:text-4xl md:text-[3.2rem] lg:text-[3.9rem] xl:text-[4.7rem]"
               }`}
+              style={{ wordBreak: "keep-all" }}
               initial={reducedMotion ? false : { opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <span className="inline-flex items-baseline gap-3 whitespace-nowrap">
-                <span className={isCzech ? "text-3xl sm:text-4xl md:text-[3.2rem] lg:text-[3.9rem] xl:text-[4.7rem]" : "text-3xl sm:text-4xl md:text-5xl lg:text-6xl"}>
+              <span className={`inline-flex flex-wrap items-baseline ${isCzech ? "gap-6 sm:gap-8" : "gap-3"}`}>
+                <span className={isCzech ? "text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.2rem] xl:text-[5rem]" : "text-3xl sm:text-4xl md:text-5xl lg:text-6xl"}>
                   {(t.hero as { sloganLine1?: string }).sloganLine1 ?? t.hero.slogan.split(" ")[0]}
                 </span>
-                <span className={isCzech ? "text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl" : "text-3xl sm:text-4xl md:text-[3.2rem] lg:text-[3.9rem] xl:text-[4.7rem]"}>
+                <span className={isCzech ? "text-7xl sm:text-8xl md:text-[5.2rem] lg:text-[6rem] xl:text-[7rem]" : "text-3xl sm:text-4xl md:text-[3.2rem] lg:text-[3.9rem] xl:text-[4.7rem]"}>
                   {sloganLine2}
                 </span>
               </span>
@@ -186,12 +187,12 @@ export default function Hero() {
 
           {/* Right: Carousel + pencil sticker */}
           <motion.div
-            className="relative flex w-full min-w-0 flex-col items-stretch"
+            className="relative flex min-w-0 w-full max-w-full flex-col items-stretch overflow-hidden"
             initial={reducedMotion ? false : { opacity: 0, x: 24 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
           >
-            <div className="relative h-[360px] w-full overflow-hidden rounded-2xl bg-slate-100 shadow-xl sm:h-[420px] lg:h-[500px]">
+            <div className="relative h-[280px] w-full max-w-full overflow-hidden rounded-2xl bg-slate-100 shadow-xl min-[480px]:h-[320px] sm:h-[360px] md:h-[400px] lg:h-[420px] xl:h-[500px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeIndex}
@@ -202,7 +203,7 @@ export default function Hero() {
                   className="absolute inset-0"
                 >
                   {slides[activeIndex].kind === "graph" || slides[activeIndex].kind === "financials" ? (
-                    <div className="absolute inset-0">
+                    <div className="absolute inset-0 bg-white">
                       <CostComparisonGraph />
                     </div>
                   ) : (
@@ -212,7 +213,7 @@ export default function Hero() {
                       className="absolute inset-0 h-full w-full object-cover"
                     />
                   )}
-                  {slides[activeIndex].kind === "benefit" || slides[activeIndex].kind === "financials" ? (
+                  {slides[activeIndex].kind === "benefit" ? (
                     <>
                       <div className="absolute inset-0 bg-slate-900/50" />
                       <div className="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-8 pt-8 sm:pt-14">
@@ -220,10 +221,8 @@ export default function Hero() {
                           {activeIndex + 1} / {totalSlides}
                         </span>
                         <p className="max-w-md text-center text-lg font-semibold leading-relaxed drop-shadow-md text-white sm:text-xl lg:text-2xl">
-                          {slides[activeIndex].kind === "benefit"
-                            ? ((t.hero as any)[`${slides[activeIndex].key}Detail`] ??
-                              (t.hero as any)[slides[activeIndex].key])
-                            : t.hero.ctaFinancialsExample}
+                          {((t.hero as any)[`${slides[activeIndex].key}Detail`] ??
+                            (t.hero as any)[slides[activeIndex].key])}
                         </p>
                       </div>
                     </>
@@ -245,11 +244,19 @@ export default function Hero() {
                 ))}
               </div>
 
-              {/* Clickable overlay: carousel links to benefits page */}
+              {/* Clickable overlay: benefit slides → corresponding benefit on Why us; graph/financials → financials page */}
               <Link
-                href="/benefits"
+                href={
+                  slides[activeIndex].kind === "benefit"
+                    ? `/benefits#benefit-${costPointKeys.indexOf(slides[activeIndex].key) + 1}`
+                    : "/financials"
+                }
                 className="absolute inset-0 z-[5]"
-                aria-label="View all benefits"
+                aria-label={
+                  slides[activeIndex].kind === "benefit"
+                    ? "View this benefit"
+                    : "View financial examples"
+                }
               />
             </div>
 

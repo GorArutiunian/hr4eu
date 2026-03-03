@@ -173,7 +173,7 @@ export default function BenefitsPage() {
       <div className="w-full px-4 sm:px-6 lg:px-8 pb-16 sm:pb-20">
         <div className="rounded-2xl bg-[var(--accent)] p-8 text-center text-white sm:p-10">
           <h2 className="text-xl font-semibold sm:text-2xl">{bp.ctaTitle}</h2>
-          <p className="mt-2 text-white/90">{bp.ctaSubtitle}</p>
+          {bp.ctaSubtitle ? <p className="mt-2 text-white/90">{bp.ctaSubtitle}</p> : null}
           <Link
             href="/contact"
             className="mt-6 inline-flex items-center justify-center rounded-full bg-white px-8 py-4 font-semibold text-[var(--accent)] transition-all hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--accent)]"

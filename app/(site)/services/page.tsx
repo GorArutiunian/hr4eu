@@ -12,15 +12,12 @@ export default function ServicesIndexPage() {
     <main className="min-h-screen bg-palette-section section-pad">
       <div className="content-width mx-auto px-4">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-6 flex justify-center">
+          <div className="mb-6 mt-8 flex justify-center">
             <img src="/logo.png" alt="" className="h-20 w-auto sm:h-24 md:h-28 [mix-blend-mode:multiply]" aria-hidden />
           </div>
           <h1 className="text-3xl font-bold tracking-tight text-palette-fg sm:text-4xl md:text-5xl">
             <HR4EUInline className="text-4xl sm:text-5xl md:text-6xl">{t.services.title}</HR4EUInline>
           </h1>
-          <p className="mt-4 text-lg text-palette-muted sm:text-xl">
-            {t.services.subtitle}
-          </p>
         </div>
 
         <ul className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

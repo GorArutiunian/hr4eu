@@ -63,9 +63,6 @@ export default function ServiceCards() {
           <h2 id="services-heading" className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
             <HR4EUInline>{t.services.title}</HR4EUInline>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-slate-600">
-            {t.services.subtitle}
-          </p>
         </motion.div>
         <motion.div
           className="mt-10 overflow-hidden rounded-2xl border-2 border-[var(--accent-orange)]/30 bg-white shadow-md"

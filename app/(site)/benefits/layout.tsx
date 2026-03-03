@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Why choose us",
+  title: "Why us",
   description:
     "Discover all HR4EU benefits: cost savings, no employment overhead, transparent pricing, and how we help European companies build hybrid EU–Armenia teams.",
 };
