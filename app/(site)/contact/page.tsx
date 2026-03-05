@@ -46,9 +46,9 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-palette-section">
       {/* Hero banner */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-[var(--accent)] to-[#1a3fa8] text-white">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-0 lg:flex-row">
-          <div className="flex-1 px-8 py-16 sm:px-12 sm:py-20 lg:py-24">
+      <div className="relative flex min-h-[340px] flex-col overflow-hidden text-white lg:flex-row">
+        <div className="flex flex-1 items-center bg-gradient-to-br from-[var(--accent)] to-[#1a3fa8] px-8 py-16 sm:px-12 sm:py-20 lg:py-24">
+          <div>
             <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-white/70">
               HR4EU
             </p>
@@ -57,13 +57,13 @@ export default function ContactPage() {
             </h1>
             <p className="mt-4 text-lg text-white/80">{t.contact.subtitle}</p>
           </div>
-          <div className="w-full lg:w-[480px] lg:shrink-0">
-            <img
-              src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80"
-              alt="Team at work"
-              className="h-64 w-full object-cover lg:h-full lg:min-h-[340px]"
-            />
-          </div>
+        </div>
+        <div className="relative h-64 w-full lg:h-auto lg:w-1/2 lg:shrink-0">
+          <img
+            src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=900&q=80"
+            alt="Team at work"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
         </div>
       </div>
 
