@@ -88,18 +88,6 @@ export default function BenefitsPage() {
         </div>
       </div>
 
-      {/* Image banner */}
-      <div className="content-width mx-auto px-4 pb-8">
-        <div className="overflow-hidden rounded-2xl shadow-md">
-          <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80"
-            alt=""
-            aria-hidden
-            className="h-52 w-full object-cover sm:h-64"
-          />
-        </div>
-      </div>
-
       {/* Full list of benefits – all 4 cards, not separated */}
       <section className="content-width mx-auto px-4 pb-14 sm:pb-20" aria-labelledby="benefits-list-heading">
         <h2 id="benefits-list-heading" className="sr-only">
