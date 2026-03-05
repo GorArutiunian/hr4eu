@@ -76,20 +76,13 @@ export default function BenefitsPage() {
 
   return (
     <main className="min-h-screen bg-palette-section">
-      {/* Header with background image */}
-      <div className="relative overflow-hidden">
-        <img
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1600&q=80"
-          alt=""
-          aria-hidden
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[var(--accent)]/75" />
-        <div className="relative content-width mx-auto px-4 pt-16 pb-14 sm:pt-20 sm:pb-16 text-center">
+      {/* Header */}
+      <div className="content-width mx-auto px-4 pt-10 pb-8 sm:pt-14 sm:pb-12">
+        <div className="mx-auto max-w-3xl text-center">
           <div className="flex justify-center mb-6">
-            <img src="/logo.png" alt="" className="h-20 w-auto sm:h-24 md:h-28 brightness-0 invert" aria-hidden />
+            <img src="/logo.png" alt="" className="h-20 w-auto sm:h-24 md:h-28 [mix-blend-mode:multiply]" aria-hidden />
           </div>
-          <h1 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl" id="benefits-list-heading">
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl" id="benefits-list-heading">
             <HR4EUInline>{(bp as { titleWithBrand?: string }).titleWithBrand ?? bp.title}</HR4EUInline>
           </h1>
         </div>
