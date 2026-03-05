@@ -92,7 +92,7 @@ export default function BenefitsPage() {
       <div className="content-width mx-auto px-4 pb-8">
         <div className="overflow-hidden rounded-2xl shadow-md">
           <img
-            src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=1400&q=80"
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80"
             alt=""
             aria-hidden
             className="h-52 w-full object-cover sm:h-64"
