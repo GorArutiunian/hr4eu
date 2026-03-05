@@ -44,7 +44,7 @@ export default function FAQSection() {
   const { t } = useLocale();
   const [openId, setOpenId] = useState<number | null>(0);
   const reducedMotion = useReducedMotion();
-  const faqs = t.faq.items as Array<{ question: string; answer?: string; blocks?: FAQBlock[] }>;
+  const faqs = t.faq.items as unknown as Array<{ question: string; answer?: string; blocks?: FAQBlock[] }>;
 
   return (
     <section
