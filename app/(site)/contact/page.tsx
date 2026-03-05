@@ -59,8 +59,8 @@ export default function ContactPage() {
           </div>
           <div className="w-full lg:w-[480px] lg:shrink-0">
             <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80"
-              alt="Team collaboration"
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=900&q=80"
+              alt="Professional business meeting"
               className="h-64 w-full object-cover lg:h-full lg:min-h-[340px]"
             />
           </div>
