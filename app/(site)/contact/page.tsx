@@ -107,6 +107,15 @@ export default function ContactPage() {
                 <p className="mt-0.5 text-base font-semibold text-palette-fg">Česká republika</p>
               </div>
             </div>
+
+            {/* Office image */}
+            <div className="overflow-hidden rounded-2xl shadow-md">
+              <img
+                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+                alt="Our office in Prague"
+                className="h-52 w-full object-cover"
+              />
+            </div>
           </div>
 
           {/* Right: form */}
