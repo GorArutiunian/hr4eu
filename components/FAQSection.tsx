@@ -74,6 +74,15 @@ export default function FAQSection() {
             <HR4EUInline>{t.faq.subtitle}</HR4EUInline>
           </p>
         </div>
+        <div className="mt-8 overflow-hidden rounded-2xl shadow-md">
+          <img
+            src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80"
+            alt=""
+            aria-hidden
+            className="h-52 w-full object-cover sm:h-64"
+          />
+        </div>
+
         <ul className="mt-10 space-y-3" role="list">
           {faqs.map((faq, i) => {
             const isOpen = openId === i;
