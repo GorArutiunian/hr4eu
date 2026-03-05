@@ -169,7 +169,7 @@ export const services: ServiceItem[] = [
     shortDescription:
       "AI agents, automation workflows, and intelligent systems to streamline your EU operations.",
     description:
-      "Navrhujeme a implementujeme AI agenty a automatizaci – chatboty, automatizaci procesů a inteligentní workflow. Každý klient má k dispozici jednoho kontaktního manažera přímo v EU, zatímco zkušený tým specialistů pracuje flexibilně z Arménie, Gruzie nebo Ukrajiny. Součástí naší služby je také průběžná podpora a údržba, aby vaše automatizovaná řešení fungovala spolehlivě i po spuštění.",
+      "Navrhujeme a implementujeme AI agenty a automatizační řešení, která firmám pomáhají zefektivnit provoz a snížit náklady. Vytváříme například inteligentní chatboty, automatizaci firemních procesů a pokročilé workflow systémy, které zrychlují každodenní operace a zvyšují produktivitu. Každý klient má jako vždy k dispozici dedikovaného kontaktního manažera v Praze.",
     icon: "cog",
     roles: [
       "AI agent design and implementation",
