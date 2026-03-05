@@ -5,11 +5,46 @@ import { HR4EUInline } from "@/components/HR4EUBrand";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/context/LocaleContext";
 
+type FAQBlock =
+  | { type: "p"; text: string }
+  | { type: "ul"; items: string[] }
+  | { type: "h"; text: string };
+
+function renderBlocks(blocks: FAQBlock[]) {
+  return (
+    <div className="space-y-3">
+      {blocks.map((block, i) => {
+        if (block.type === "h") {
+          return (
+            <p key={i} className="font-semibold text-slate-800">
+              {block.text}
+            </p>
+          );
+        }
+        if (block.type === "ul") {
+          return (
+            <ul key={i} className="ml-4 space-y-1 list-disc text-slate-600">
+              {block.items.map((item, j) => (
+                <li key={j}>{item}</li>
+              ))}
+            </ul>
+          );
+        }
+        return (
+          <p key={i} className="text-slate-600 leading-relaxed">
+            <HR4EUInline>{block.text}</HR4EUInline>
+          </p>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function FAQSection() {
   const { t } = useLocale();
   const [openId, setOpenId] = useState<number | null>(0);
   const reducedMotion = useReducedMotion();
-  const faqs = t.faq.items;
+  const faqs = t.faq.items as Array<{ question: string; answer?: string; blocks?: FAQBlock[] }>;
 
   return (
     <section
@@ -95,9 +130,12 @@ export default function FAQSection() {
                         transition={{ duration: 0.25 }}
                         className="overflow-hidden"
                       >
-                        <p className="border-t border-white/60 bg-white/50 px-5 pb-4 pt-2 text-slate-600 leading-relaxed">
-                          <HR4EUInline>{faq?.answer ?? ""}</HR4EUInline>
-                        </p>
+                          <div className="border-t border-white/60 bg-white/50 px-5 pb-5 pt-3">
+                          {faq?.blocks
+                            ? renderBlocks(faq.blocks)
+                            : <p className="text-slate-600 leading-relaxed"><HR4EUInline>{faq?.answer ?? ""}</HR4EUInline></p>
+                          }
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>

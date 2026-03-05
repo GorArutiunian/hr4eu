@@ -114,11 +114,11 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, ease: "easeOut" }}
             >
-              <span className={`inline-flex flex-wrap items-baseline ${isCzech ? "gap-6 sm:gap-8" : "gap-3"}`}>
-                <span className={isCzech ? "text-4xl sm:text-5xl md:text-[3.5rem] lg:text-[4.2rem] xl:text-[5rem]" : "text-3xl sm:text-4xl md:text-5xl lg:text-6xl"}>
+              <span className="inline-flex flex-nowrap items-baseline whitespace-nowrap gap-[0.3em]">
+                <span style={{ fontSize: "clamp(1.5rem, 3.5vw, 4rem)" }}>
                   {(t.hero as { sloganLine1?: string }).sloganLine1 ?? t.hero.slogan.split(" ")[0]}
                 </span>
-                <span className={isCzech ? "text-7xl sm:text-8xl md:text-[5.2rem] lg:text-[6rem] xl:text-[7rem]" : "text-3xl sm:text-4xl md:text-[3.2rem] lg:text-[3.9rem] xl:text-[4.7rem]"}>
+                <span style={{ fontSize: isCzech ? "clamp(3rem, 7vw, 7rem)" : "clamp(1.5rem, 3.5vw, 4.7rem)" }}>
                   {sloganLine2}
                 </span>
               </span>

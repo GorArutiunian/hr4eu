@@ -9,48 +9,22 @@ const benefitKeys = [
   "benefit1",
   "benefit2",
   "benefit3",
-  "benefit5",
   "benefit4",
+  "benefit5",
   "benefit6",
-  "benefit7",
-  "benefit8",
 ] as const;
 
 const totalBenefits = benefitKeys.length;
 
-const heroPillKeys = ["costPoint1", "costPoint2", "costPoint3", "costPoint5"] as const;
-const pageOnlyPillKeys = ["pill4", "pill6", "pill7", "pill8"] as const;
-
-function getPillLabel(bp: Record<string, string>, hero: Record<string, string>, i: number): string {
-  if (i < heroPillKeys.length) return hero[heroPillKeys[i]] ?? "";
-  const pageKey = pageOnlyPillKeys[i - heroPillKeys.length];
-  return bp[pageKey] ?? "";
-}
-
-const heroBenefitMap: Record<string, { titleKey: string; descKey: string }> = {
-  benefit1: { titleKey: "costPoint1", descKey: "costPoint1Detail" },
-  benefit2: { titleKey: "costPoint2", descKey: "costPoint2Detail" },
-  benefit3: { titleKey: "costPoint3", descKey: "costPoint3Detail" },
-  benefit5: { titleKey: "costPoint5", descKey: "costPoint5Detail" },
-};
-
 function getBenefitTitleAndDesc(
   key: string,
   bp: Record<string, string>,
-  hero: Record<string, string>
 ): { title: string; desc: string } {
-  const heroMap = heroBenefitMap[key];
-  if (heroMap) {
-    return {
-      title: (hero[heroMap.titleKey] as string) ?? "",
-      desc: (hero[heroMap.descKey] as string) ?? "",
-    };
-  }
-  const titleKey = `${key}Title` as keyof typeof bp;
-  const descKey = `${key}Desc` as keyof typeof bp;
+  const titleKey = `${key}Title`;
+  const descKey = `${key}Desc`;
   return {
-    title: typeof bp[titleKey] === "string" ? (bp[titleKey] as string) : "",
-    desc: typeof bp[descKey] === "string" ? (bp[descKey] as string) : "",
+    title: typeof bp[titleKey] === "string" ? bp[titleKey] : "",
+    desc: typeof bp[descKey] === "string" ? bp[descKey] : "",
   };
 }
 
@@ -68,7 +42,6 @@ function getInitialIndex(): number {
 export default function BenefitsPage() {
   const { t } = useLocale();
   const bp = t.benefitsPage;
-  const hero = t.hero;
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const cardRefs = useRef<(HTMLLIElement | null)[]>([]);
 
@@ -124,7 +97,7 @@ export default function BenefitsPage() {
         <ul className="w-full space-y-6 sm:space-y-8">
           {benefitKeys.map((key, i) => {
             const isSelected = i === selectedIndex;
-            const { title, desc } = getBenefitTitleAndDesc(key, bp, hero);
+            const { title, desc } = getBenefitTitleAndDesc(key, bp as unknown as Record<string, string>);
             return (
               <li
                 key={key}
@@ -155,18 +128,6 @@ export default function BenefitsPage() {
             );
           })}
         </ul>
-      </section>
-
-      {/* What we do */}
-      <section className="w-full px-4 sm:px-6 lg:px-8 pb-14" aria-labelledby="what-we-do-heading">
-        <div className="rounded-2xl bg-[#eef2ff] p-6 sm:p-8 md:p-10">
-          <h2 id="what-we-do-heading" className="text-xl font-bold text-slate-900 sm:text-2xl">
-            {bp.whatWeDo}
-          </h2>
-          <p className="mt-4 text-slate-700 leading-relaxed sm:text-lg">
-            <HR4EUInline>{bp.whatWeDoDesc}</HR4EUInline>
-          </p>
-        </div>
       </section>
 
       {/* CTA */}
