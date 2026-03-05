@@ -49,7 +49,7 @@ export default function CTASection() {
             {t.cta.bookCall}
           </Link>
           <a
-            href="mailto:hello@hr4eu.com"
+            href="mailto:info@hr4eu.cz"
             className="inline-flex items-center justify-center rounded-full border-2 border-slate-700 bg-transparent px-8 py-4 text-lg font-medium text-slate-900 transition-all hover:bg-slate-800 hover:text-white hover:border-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-700 focus:ring-offset-2 focus:ring-offset-[var(--hero-bright-blue)]"
             aria-label={t.cta.emailUs}
           >

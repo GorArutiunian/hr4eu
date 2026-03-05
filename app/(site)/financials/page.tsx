@@ -61,7 +61,7 @@ export default function FinancialsPage() {
               {t.cta.bookCall}
             </Link>
             <a
-              href="mailto:hello@hr4eu.com"
+              href="mailto:info@hr4eu.cz"
               className="inline-flex items-center justify-center rounded-full border-2 border-white bg-transparent px-8 py-4 font-medium text-white transition-all hover:bg-white hover:text-[var(--accent)] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[var(--accent)]"
               aria-label={t.cta.emailUs}
             >

@@ -96,9 +96,6 @@ export default function ServiceCards() {
                 <h3 className="mt-4 text-xl font-semibold text-palette-fg group-hover:text-palette-accent transition-colors sm:text-2xl">
                   {(t as { serviceTitles: Record<string, string> }).serviceTitles[service.slug] ?? service.title}
                 </h3>
-                <p className="mt-3 flex-1 text-base text-slate-600 leading-relaxed sm:text-lg">
-                  {(t as { serviceShortDesc: Record<string, string> }).serviceShortDesc[service.slug] ?? service.shortDescription}
-                </p>
                 <span className="mt-4 inline-flex items-center text-base font-medium text-palette-accent group-hover:underline sm:text-lg">
                   {t.services.learnMore}
                   <svg className="ml-1 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

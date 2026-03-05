@@ -26,7 +26,7 @@ export default function AboutPage() {
       <div className="content-width mx-auto flex flex-1 flex-col px-4">
 
         {/* Header */}
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="text-center">
           <div className="flex justify-center mb-6">
             <img src="/logo.png" alt="" className="h-20 w-auto sm:h-24 md:h-28 [mix-blend-mode:multiply]" aria-hidden />
           </div>
@@ -35,7 +35,7 @@ export default function AboutPage() {
           </h1>
         </div>
 
-        <div className="mx-auto mt-8 w-full max-w-3xl space-y-6 pb-16">
+        <div className="mt-8 w-full space-y-6 pb-16">
 
           {/* Hero image */}
           <div className="overflow-hidden rounded-2xl border-2 border-[var(--accent-orange)] shadow-lg ring-2 ring-[var(--accent-orange)]/20">
@@ -44,9 +44,6 @@ export default function AboutPage() {
               alt=""
               className="h-48 w-full object-cover sm:h-56 md:h-64"
             />
-            <div className="bg-[var(--accent)]/90 px-5 py-4 text-white font-medium">
-              European companies & Armenian talent — one team.
-            </div>
           </div>
 
           {/* Origin / history */}

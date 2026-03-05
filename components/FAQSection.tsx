@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { HR4EUInline } from "@/components/HR4EUBrand";
 import { motion, useReducedMotion, AnimatePresence } from "framer-motion";
 import { useLocale } from "@/context/LocaleContext";
@@ -76,6 +77,7 @@ export default function FAQSection() {
         <ul className="mt-10 space-y-3" role="list">
           {faqs.map((faq, i) => {
             const isOpen = openId === i;
+            const isFinancialsLink = i === 4;
             return (
               <li key={faq?.question ?? i}>
                 <article
@@ -84,6 +86,24 @@ export default function FAQSection() {
                   }`}
                   aria-expanded={isOpen}
                 >
+                  {isFinancialsLink ? (
+                    <Link
+                      href="/financials"
+                      className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-semibold text-palette-fg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-inset rounded-xl transition-colors"
+                    >
+                      <span className="flex items-center gap-3">
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[var(--accent)] text-sm font-bold text-white">
+                          {i + 1}
+                        </span>
+                        <HR4EUInline>{faq?.question ?? ""}</HR4EUInline>
+                      </span>
+                      <span className="shrink-0 text-palette-accent" aria-hidden>
+                        <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </span>
+                    </Link>
+                  ) : (
                   <button
                     type="button"
                     className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left font-semibold text-palette-fg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-inset rounded-xl transition-colors"
@@ -118,6 +138,8 @@ export default function FAQSection() {
                       </svg>
                     </span>
                   </button>
+                  )}
+                  {!isFinancialsLink && (
                   <AnimatePresence initial={false}>
                     {isOpen && (
                       <motion.div
@@ -130,7 +152,7 @@ export default function FAQSection() {
                         transition={{ duration: 0.25 }}
                         className="overflow-hidden"
                       >
-                          <div className="border-t border-white/60 bg-white/50 px-5 pb-5 pt-3">
+                        <div className="border-t border-white/60 bg-white/50 px-5 pb-5 pt-3">
                           {faq?.blocks
                             ? renderBlocks(faq.blocks)
                             : <p className="text-slate-600 leading-relaxed"><HR4EUInline>{faq?.answer ?? ""}</HR4EUInline></p>
@@ -139,6 +161,7 @@ export default function FAQSection() {
                       </motion.div>
                     )}
                   </AnimatePresence>
+                  )}
                 </article>
               </li>
             );

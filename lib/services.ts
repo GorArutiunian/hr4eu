@@ -24,7 +24,7 @@ export const services: ServiceItem[] = [
     shortDescription:
       "Software development, DevOps, and technical teams built for European product and engineering needs.",
     description:
-      "We assemble dedicated IT and engineering teams—from full-stack developers to DevOps and QA—aligned with your stack and processes. One EU-facing tech lead, backed by 3–5 Armenian specialists.",
+      "Poskytujeme kompletní pokrytí softwarového vývoje a inženýringu pro evropské firmy. Nabízíme týmy vývojářů, DevOps specialistů a technických expertů, kteří pracují flexibilně z Arménie, Gruzie nebo Ukrajiny, zatímco klient má vždy jedno kontaktní místo v EU. Součástí naší služby je také průběžná podpora a údržba, aby vaše řešení fungovalo spolehlivě i po spuštění.",
     icon: "code",
     roles: [
       "Full-stack developers (React, Node, Python, .NET)",
@@ -53,7 +53,7 @@ export const services: ServiceItem[] = [
     shortDescription:
       "Data analysts, BI specialists, and analytics teams to turn data into decisions.",
     description:
-      "From reporting and dashboards to advanced analytics and data science, we provide a dedicated analytics team with one EU point of contact and 3–5 Armenia-based specialists.",
+      "Nabízíme datové analytiky, BI specialisty a kompletní analytické týmy, které podporují rozhodování na základě dat. Zajišťujeme vše od pravidelného reportingu a tvorby dashboardů až po pokročilou analytiku a data science. Každý klient má k dispozici jednoho kontaktního manažera přímo v Praze, zatímco zkušený tým specialistů pracuje flexibilně z Arménie, Gruzie nebo Ukrajiny, což umožňuje vysokou efektivitu a nižší náklady o 40–60 %.",
     icon: "chart",
     roles: [
       "Data analysts",
@@ -82,7 +82,7 @@ export const services: ServiceItem[] = [
     shortDescription:
       "Finance, accounting, and back-office teams that integrate with your EU operations.",
     description:
-      "We build finance and accounting teams—bookkeeping, reporting, reconciliations, and finance ops—with an EU-facing lead and an Armenia-based delivery team that fits your processes.",
+      "Významných výsledků dosahujeme také v oblasti outsourcingu účetních a finančních profesí. V našem pražském týmu manažerů působí zkušení profesionální účetní, kteří garantují vysokou úroveň poskytovaných služeb.",
     icon: "calculator",
     roles: [
       "Accountants (AR/AP, GL, reporting)",
@@ -111,7 +111,7 @@ export const services: ServiceItem[] = [
     shortDescription:
       "Marketing, growth, and content teams to support European campaigns and demand generation.",
     description:
-      "We provide marketing and growth talent—content, performance, brand, and operations—with one EU-facing marketing lead and 3–5 Armenia-based specialists executing campaigns and assets.",
+      "Dokážeme podpořit růst Vaší společnosti díky profesionálnímu týmu marketingových a SMM specialistů za velmi konkurenceschopné ceny. Vysokou kvalitu poskytovaných služeb přitom garantuje zkušený a dobře zaškolený tým našich manažerů v Praze.",
     icon: "megaphone",
     roles: [
       "Content writers and copywriters",
@@ -140,7 +140,7 @@ export const services: ServiceItem[] = [
     shortDescription:
       "Administrative support, logistics coordination, and back-office operations for your EU business.",
     description:
-      "We provide administrative and logistics teams—order management, supply chain coordination, documentation, and administrative support—with one EU-facing lead and 3–5 Armenia-based specialists who integrate with your processes.",
+      "Naše služba zahrnuje kompletní zajištění administrativních činností, které nevyžadují stálou fyzickou přítomnost zaměstnance. Patří sem například zadávání dat do systémů, zákaznický servis, příprava a zpracování cenových nabídek a mnoho dalších administrativních a podpůrných procesů.",
     icon: "clipboard",
     roles: [
       "Logistics coordinators",
@@ -169,7 +169,7 @@ export const services: ServiceItem[] = [
     shortDescription:
       "AI agents, automation workflows, and intelligent systems to streamline your EU operations.",
     description:
-      "We design and implement AI agents and automation—chatbots, process automation, and intelligent workflows—with one EU-facing lead and 3–5 Armenia-based specialists who integrate with your tools and SLAs.",
+      "Navrhujeme a implementujeme AI agenty a automatizaci – chatboty, automatizaci procesů a inteligentní workflow. Každý klient má k dispozici jednoho kontaktního manažera přímo v EU, zatímco zkušený tým specialistů pracuje flexibilně z Arménie, Gruzie nebo Ukrajiny. Součástí naší služby je také průběžná podpora a údržba, aby vaše automatizovaná řešení fungovala spolehlivě i po spuštění.",
     icon: "cog",
     roles: [
       "AI agent design and implementation",
@@ -179,6 +179,7 @@ export const services: ServiceItem[] = [
       "LLM and prompt engineering",
       "Documentation and knowledge management",
       "Internal tooling and process support",
+      "AI workflow testing and quality assurance",
     ],
     engagementModel: {
       euLead: "1 EU-facing AI/automation lead",

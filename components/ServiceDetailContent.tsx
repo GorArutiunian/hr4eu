@@ -88,8 +88,7 @@ export default function ServiceDetailContent({ service }: { service: ServiceItem
 
         {/* ── Description + CTA ── */}
         <div className="rounded-2xl border-2 border-[var(--accent)]/20 bg-white p-6 shadow-md sm:p-8">
-          <p className="text-lg leading-relaxed text-slate-700 sm:text-xl">{shortDesc}</p>
-          <p className="mt-4 text-base leading-relaxed text-slate-600">{service.description}</p>
+          <p className="text-lg leading-relaxed text-slate-700 sm:text-xl">{service.description}</p>
           <Link
             href="/contact"
             className="mt-6 inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-6 py-3 text-white font-semibold hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-offset-2"
@@ -120,56 +119,6 @@ export default function ServiceDetailContent({ service }: { service: ServiceItem
           </div>
         </section>
 
-        {/* ── Team model ── */}
-        <section aria-labelledby="engagement-heading">
-          <h2 id="engagement-heading" className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl">
-            {t.serviceDetail.engagementTitle}
-          </h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            <div className="flex items-start gap-4 rounded-2xl border-2 border-[var(--accent)] bg-[#eef2ff] p-5">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[var(--accent)] text-white">
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                </svg>
-              </span>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-[var(--accent)]">EU Lead</p>
-                <p className="mt-1 text-sm font-medium text-slate-800">{service.engagementModel.euLead}</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-slate-100 text-slate-600">
-                <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                </svg>
-              </span>
-              <div>
-                <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Team</p>
-                <p className="mt-1 text-sm font-medium text-slate-800">{service.engagementModel.specialists}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ── Why HR4EU ── */}
-        <section aria-labelledby="why-heading">
-          <h2 id="why-heading" className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl">
-            <HR4EUInline>{t.serviceDetail.whyTitle}</HR4EUInline>
-          </h2>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {service.whyHr4eu.map((item, i) => (
-              <div key={i} className="flex items-start gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-[var(--accent-orange)]/15 text-[var(--accent-orange)]">
-                  <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-                  </svg>
-                </span>
-                <p className="text-sm leading-relaxed text-slate-700">{item}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
         {/* ── CTA ── */}
         <div className="rounded-2xl bg-[var(--accent)] p-8 text-center text-white sm:p-10">
           <h2 className="text-xl font-semibold sm:text-2xl">{t.serviceDetail.ctaTitle}</h2>
@@ -182,10 +131,10 @@ export default function ServiceDetailContent({ service }: { service: ServiceItem
               {t.serviceDetail.contactUs}
             </Link>
             <a
-              href="mailto:hello@hr4eu.com"
+              href="mailto:info@hr4eu.cz"
               className="inline-flex items-center justify-center rounded-full border-2 border-white/60 px-7 py-3 font-medium text-white hover:border-white hover:bg-white/10 focus:outline-none"
             >
-              hello@hr4eu.com
+              info@hr4eu.cz
             </a>
           </div>
         </div>
