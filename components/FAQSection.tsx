@@ -76,7 +76,7 @@ export default function FAQSection() {
         </div>
         <div className="mt-8 overflow-hidden rounded-2xl shadow-md">
           <img
-            src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=1400&q=80"
+            src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=1400&q=80"
             alt=""
             aria-hidden
             className="h-52 w-full object-cover sm:h-64"
