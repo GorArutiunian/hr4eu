@@ -122,6 +122,28 @@ export default function BenefitsPage() {
                     <p className="mt-3 text-slate-600 leading-relaxed sm:text-lg">
                       <HR4EUInline>{desc}</HR4EUInline>
                     </p>
+                    {(bp as unknown as Record<string, unknown>)[`${key}Desc2`] && (
+                      <p className="mt-3 text-slate-600 leading-relaxed sm:text-lg">
+                        {String((bp as unknown as Record<string, unknown>)[`${key}Desc2`])}
+                      </p>
+                    )}
+                    {Array.isArray((bp as unknown as Record<string, unknown>)[`${key}List`]) && (
+                      <div className="mt-4">
+                        {(bp as unknown as Record<string, unknown>)[`${key}ListTitle`] && (
+                          <p className="font-semibold text-slate-700 sm:text-lg">
+                            {String((bp as unknown as Record<string, unknown>)[`${key}ListTitle`])}
+                          </p>
+                        )}
+                        <ul className="mt-2 space-y-1.5">
+                          {((bp as unknown as Record<string, unknown>)[`${key}List`] as string[]).map((item, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-slate-600 sm:text-lg">
+                              <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-[var(--accent)]" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </div>
               </li>
