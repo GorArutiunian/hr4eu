@@ -46,15 +46,24 @@ export default function ContactPage() {
   return (
     <main className="min-h-screen bg-palette-section">
       {/* Hero banner */}
-      <div className="bg-gradient-to-br from-[var(--accent)] to-[#1a3fa8] px-4 py-16 text-white sm:py-20">
-        <div className="mx-auto max-w-3xl text-center">
-          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-white/70">
-            HR4EU
-          </p>
-          <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl">
-            {t.contact.title}
-          </h1>
-          <p className="mt-4 text-lg text-white/80">{t.contact.subtitle}</p>
+      <div className="relative overflow-hidden bg-gradient-to-br from-[var(--accent)] to-[#1a3fa8] text-white">
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-0 lg:flex-row">
+          <div className="flex-1 px-8 py-16 sm:px-12 sm:py-20 lg:py-24">
+            <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-white/70">
+              HR4EU
+            </p>
+            <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl">
+              {t.contact.title}
+            </h1>
+            <p className="mt-4 text-lg text-white/80">{t.contact.subtitle}</p>
+          </div>
+          <div className="w-full lg:w-[480px] lg:shrink-0">
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=900&q=80"
+              alt="Team collaboration"
+              className="h-64 w-full object-cover lg:h-full lg:min-h-[340px]"
+            />
+          </div>
         </div>
       </div>
 
@@ -108,14 +117,6 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Office image */}
-            <div className="overflow-hidden rounded-2xl shadow-md">
-              <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
-                alt="Our office in Prague"
-                className="h-52 w-full object-cover"
-              />
-            </div>
           </div>
 
           {/* Right: form */}
