@@ -128,14 +128,14 @@ export default function BenefitsPage() {
                     <p className="mt-3 text-slate-600 leading-relaxed sm:text-lg">
                       <HR4EUInline>{desc}</HR4EUInline>
                     </p>
-                    {(bp as unknown as Record<string, unknown>)[`${key}Desc2`] && (
+                    {!!((bp as unknown as Record<string, unknown>)[`${key}Desc2`]) && (
                       <p className="mt-3 text-slate-600 leading-relaxed sm:text-lg">
                         {String((bp as unknown as Record<string, unknown>)[`${key}Desc2`])}
                       </p>
                     )}
                     {Array.isArray((bp as unknown as Record<string, unknown>)[`${key}List`]) && (
                       <div className="mt-4">
-                        {(bp as unknown as Record<string, unknown>)[`${key}ListTitle`] && (
+                        {!!((bp as unknown as Record<string, unknown>)[`${key}ListTitle`]) && (
                           <p className="font-semibold text-slate-700 sm:text-lg">
                             {String((bp as unknown as Record<string, unknown>)[`${key}ListTitle`])}
                           </p>

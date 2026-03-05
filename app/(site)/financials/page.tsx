@@ -81,7 +81,6 @@ export default function FinancialsPage() {
             </a>
           </div>
         </div>
-        </div>
       </div>
     </main>
   );
