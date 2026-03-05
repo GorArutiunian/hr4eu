@@ -21,12 +21,16 @@ type LocaleContextValue = {
 const LocaleContext = createContext<LocaleContextValue | null>(null);
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
+  const [locale, setLocaleState] = useState<Locale>("cs");
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY) as Locale | null;
-    if (stored === "en" || stored === "cs") setLocaleState(stored);
+    if (stored === "en" || stored === "cs") {
+      setLocaleState(stored);
+    } else {
+      setLocaleState("cs");
+    }
     setMounted(true);
   }, []);
 
@@ -41,9 +45,9 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     return (
       <LocaleContext.Provider
         value={{
-          locale: "en",
+          locale: "cs",
           setLocale,
-          t: translations.en,
+          t: translations.cs,
         }}
       >
         {children}
