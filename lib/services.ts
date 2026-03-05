@@ -24,7 +24,7 @@ export const services: ServiceItem[] = [
     shortDescription:
       "Software development, DevOps, and technical teams built for European product and engineering needs.",
     description:
-      "Poskytujeme kompletní pokrytí softwarového vývoje a inženýringu pro evropské firmy. Nabízíme týmy vývojářů, DevOps specialistů a technických expertů, kteří pracují flexibilně z Arménie, Gruzie nebo Ukrajiny, zatímco klient má vždy jedno kontaktní místo v EU. Součástí naší služby je také průběžná podpora a údržba, aby vaše řešení fungovalo spolehlivě i po spuštění.",
+      "Poskytujeme kompletní pokrytí softwarového vývoje, inženýringu a údržby pro evropské firmy. Nabízíme týmy vývojářů, DevOps specialistů a technických expertů, kteří pracují flexibilně z Arménie, Gruzie, Srbska nebo Ukrajiny, zatímco klient má vždy k dispozici jednoho konkrétního specialistu v Praze, který garantuje vysokou kvalitu odvedené práce. Součástí naší služby je také průběžná podpora a údržba, aby vaše řešení fungovalo spolehlivě i po spuštění.",
     icon: "code",
     roles: [
       "Full-stack developers (React, Node, Python, .NET)",
